@@ -9,22 +9,25 @@ import Cocoa
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-
+    var menuIconManager: MenuIconManager? = MenuIconManager()
+    
     @IBOutlet var window: NSWindow!
-
-
+    
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        window.level = .floating
+        
+        menuIconManager?.showAppMenuIcon()
+        
     }
-
+    
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
+    
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return true
     }
-
-
+    
 }
 
