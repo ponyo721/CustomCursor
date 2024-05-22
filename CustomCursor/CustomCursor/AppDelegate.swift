@@ -9,16 +9,15 @@ import Cocoa
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-    var menuIconManager: MenuIconManager? = MenuIconManager()
+    var customCursorManager: CustomCursorManager? = CustomCursorManager()
     
     @IBOutlet var window: NSWindow!
     
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        #if DEBUG
         window.level = .floating
-        
-        menuIconManager?.showAppMenuIcon()
-        
+        #endif
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

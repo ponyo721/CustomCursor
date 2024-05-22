@@ -14,6 +14,8 @@
 		2524D0A42BFD65D8000FD749 /* CustomCursorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0A32BFD65D8000FD749 /* CustomCursorUITests.swift */; };
 		2524D0A62BFD65D8000FD749 /* CustomCursorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0A52BFD65D8000FD749 /* CustomCursorUITestsLaunchTests.swift */; };
 		2524D0B32BFD6683000FD749 /* MenuIconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0B22BFD6683000FD749 /* MenuIconManager.swift */; };
+		2524D0B72BFD6A2F000FD749 /* GlobalEventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0B62BFD6A2E000FD749 /* GlobalEventMonitor.swift */; };
+		2524D0B92BFD6BA5000FD749 /* CustomCursorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0B82BFD6BA5000FD749 /* CustomCursorManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		2524D0A32BFD65D8000FD749 /* CustomCursorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCursorUITests.swift; sourceTree = "<group>"; };
 		2524D0A52BFD65D8000FD749 /* CustomCursorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCursorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2524D0B22BFD6683000FD749 /* MenuIconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIconManager.swift; sourceTree = "<group>"; };
+		2524D0B62BFD6A2E000FD749 /* GlobalEventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEventMonitor.swift; sourceTree = "<group>"; };
+		2524D0B82BFD6BA5000FD749 /* CustomCursorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCursorManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +99,10 @@
 		2524D0882BFD65D7000FD749 /* CustomCursor */ = {
 			isa = PBXGroup;
 			children = (
+				2524D0B52BFD66AD000FD749 /* utility  */,
 				2524D0B42BFD6698000FD749 /* ui */,
 				2524D0892BFD65D7000FD749 /* AppDelegate.swift */,
+				2524D0B82BFD6BA5000FD749 /* CustomCursorManager.swift */,
 				2524D08B2BFD65D8000FD749 /* Assets.xcassets */,
 				2524D08D2BFD65D8000FD749 /* MainMenu.xib */,
 				2524D0902BFD65D8000FD749 /* CustomCursor.entitlements */,
@@ -124,7 +130,6 @@
 		2524D0B42BFD6698000FD749 /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				2524D0B52BFD66AD000FD749 /* utility  */,
 				2524D0B22BFD6683000FD749 /* MenuIconManager.swift */,
 			);
 			path = ui;
@@ -133,6 +138,7 @@
 		2524D0B52BFD66AD000FD749 /* utility  */ = {
 			isa = PBXGroup;
 			children = (
+				2524D0B62BFD6A2E000FD749 /* GlobalEventMonitor.swift */,
 			);
 			path = "utility ";
 			sourceTree = "<group>";
@@ -267,8 +273,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2524D0B92BFD6BA5000FD749 /* CustomCursorManager.swift in Sources */,
 				2524D08A2BFD65D7000FD749 /* AppDelegate.swift in Sources */,
 				2524D0B32BFD6683000FD749 /* MenuIconManager.swift in Sources */,
+				2524D0B72BFD6A2F000FD749 /* GlobalEventMonitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

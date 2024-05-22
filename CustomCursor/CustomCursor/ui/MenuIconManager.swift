@@ -7,8 +7,12 @@
 
 import Cocoa
 
-class MenuIconManager: NSObject {
+class MenuIconManager {
     var statusItem: NSStatusItem?
+    
+    init() {
+        print("MenuIconManager init")
+    }
     
     func showAppMenuIcon() {
         // 상태 아이템 생성
