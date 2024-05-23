@@ -9,7 +9,7 @@ import Cocoa
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-    var customCursorManager: CustomCursorManager? = CustomCursorManager()
+    let customCursorManager: CustomCursorManager! = CustomCursorManager()
     
     @IBOutlet var window: NSWindow!
     
@@ -17,6 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         #if DEBUG
         window.level = .floating
+        window.close()
         #endif
     }
     

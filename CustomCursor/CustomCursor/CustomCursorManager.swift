@@ -9,22 +9,19 @@ import Cocoa
 import AppKit
 
 public class CustomCursorManager {
-    private let menuIconManager: MenuIconManager? = MenuIconManager()
-    
-    var eventHandler : GlobalEventMonitor?
-    var gecount : Int = 0
-    
-//    menuIconManager?.showAppMenuIcon()
+    private let uiManager: UIManager! = UIManager()
+    private let systemEventManager: SystemEventManager! = SystemEventManager()
     
     init() {
-        print("CustomCursorManager init")
+        print("[CustomCursorManager] init")
         
-        menuIconManager?.showAppMenuIcon()
+        self.initalizeApplication()
+    }
+    
+    func initalizeApplication(){
+        print("[CustomCursorManager] initalizeApplication")
         
-        eventHandler = GlobalEventMonitor(mask: .leftMouseDown, handler: { (mouseEvent: NSEvent?) in
-            self.gecount += 1
-            print("global event monitor: \(self.gecount)")
-        })
-        eventHandler?.start()
+        uiManager.initalize()
+        systemEventManager.initalize()
     }
 }

@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25227A362BFF177000D6739B /* SystemEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25227A352BFF177000D6739B /* SystemEventManager.swift */; };
+		25227A382BFF178C00D6739B /* AppUIVisbleModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25227A372BFF178C00D6739B /* AppUIVisbleModule.swift */; };
+		25227A3A2BFF179B00D6739B /* SystemMouseEventListenerModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25227A392BFF179B00D6739B /* SystemMouseEventListenerModule.swift */; };
 		2524D08A2BFD65D7000FD749 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0892BFD65D7000FD749 /* AppDelegate.swift */; };
 		2524D08C2BFD65D8000FD749 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2524D08B2BFD65D8000FD749 /* Assets.xcassets */; };
 		2524D08F2BFD65D8000FD749 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2524D08E2BFD65D8000FD749 /* Base */; };
 		2524D09A2BFD65D8000FD749 /* CustomCursorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0992BFD65D8000FD749 /* CustomCursorTests.swift */; };
 		2524D0A42BFD65D8000FD749 /* CustomCursorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0A32BFD65D8000FD749 /* CustomCursorUITests.swift */; };
 		2524D0A62BFD65D8000FD749 /* CustomCursorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0A52BFD65D8000FD749 /* CustomCursorUITestsLaunchTests.swift */; };
-		2524D0B32BFD6683000FD749 /* MenuIconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0B22BFD6683000FD749 /* MenuIconManager.swift */; };
-		2524D0B72BFD6A2F000FD749 /* GlobalEventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0B62BFD6A2E000FD749 /* GlobalEventMonitor.swift */; };
+		2524D0B32BFD6683000FD749 /* UIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0B22BFD6683000FD749 /* UIManager.swift */; };
 		2524D0B92BFD6BA5000FD749 /* CustomCursorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0B82BFD6BA5000FD749 /* CustomCursorManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		25227A352BFF177000D6739B /* SystemEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemEventManager.swift; sourceTree = "<group>"; };
+		25227A372BFF178C00D6739B /* AppUIVisbleModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUIVisbleModule.swift; sourceTree = "<group>"; };
+		25227A392BFF179B00D6739B /* SystemMouseEventListenerModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMouseEventListenerModule.swift; sourceTree = "<group>"; };
 		2524D0862BFD65D7000FD749 /* CustomCursor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomCursor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2524D0892BFD65D7000FD749 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2524D08B2BFD65D8000FD749 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -46,8 +51,7 @@
 		2524D09F2BFD65D8000FD749 /* CustomCursorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomCursorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2524D0A32BFD65D8000FD749 /* CustomCursorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCursorUITests.swift; sourceTree = "<group>"; };
 		2524D0A52BFD65D8000FD749 /* CustomCursorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCursorUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		2524D0B22BFD6683000FD749 /* MenuIconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIconManager.swift; sourceTree = "<group>"; };
-		2524D0B62BFD6A2E000FD749 /* GlobalEventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEventMonitor.swift; sourceTree = "<group>"; };
+		2524D0B22BFD6683000FD749 /* UIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIManager.swift; sourceTree = "<group>"; };
 		2524D0B82BFD6BA5000FD749 /* CustomCursorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCursorManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,9 +104,10 @@
 			isa = PBXGroup;
 			children = (
 				2524D0B52BFD66AD000FD749 /* utility  */,
-				2524D0B42BFD6698000FD749 /* ui */,
 				2524D0892BFD65D7000FD749 /* AppDelegate.swift */,
 				2524D0B82BFD6BA5000FD749 /* CustomCursorManager.swift */,
+				25227A352BFF177000D6739B /* SystemEventManager.swift */,
+				2524D0B22BFD6683000FD749 /* UIManager.swift */,
 				2524D08B2BFD65D8000FD749 /* Assets.xcassets */,
 				2524D08D2BFD65D8000FD749 /* MainMenu.xib */,
 				2524D0902BFD65D8000FD749 /* CustomCursor.entitlements */,
@@ -127,18 +132,11 @@
 			path = CustomCursorUITests;
 			sourceTree = "<group>";
 		};
-		2524D0B42BFD6698000FD749 /* ui */ = {
-			isa = PBXGroup;
-			children = (
-				2524D0B22BFD6683000FD749 /* MenuIconManager.swift */,
-			);
-			path = ui;
-			sourceTree = "<group>";
-		};
 		2524D0B52BFD66AD000FD749 /* utility  */ = {
 			isa = PBXGroup;
 			children = (
-				2524D0B62BFD6A2E000FD749 /* GlobalEventMonitor.swift */,
+				25227A372BFF178C00D6739B /* AppUIVisbleModule.swift */,
+				25227A392BFF179B00D6739B /* SystemMouseEventListenerModule.swift */,
 			);
 			path = "utility ";
 			sourceTree = "<group>";
@@ -275,8 +273,10 @@
 			files = (
 				2524D0B92BFD6BA5000FD749 /* CustomCursorManager.swift in Sources */,
 				2524D08A2BFD65D7000FD749 /* AppDelegate.swift in Sources */,
-				2524D0B32BFD6683000FD749 /* MenuIconManager.swift in Sources */,
-				2524D0B72BFD6A2F000FD749 /* GlobalEventMonitor.swift in Sources */,
+				25227A3A2BFF179B00D6739B /* SystemMouseEventListenerModule.swift in Sources */,
+				2524D0B32BFD6683000FD749 /* UIManager.swift in Sources */,
+				25227A362BFF177000D6739B /* SystemEventManager.swift in Sources */,
+				25227A382BFF178C00D6739B /* AppUIVisbleModule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

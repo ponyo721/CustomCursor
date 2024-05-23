@@ -1,20 +1,44 @@
 //
-//  MenuIconManager.swift
+//  AppUIVisbleModule.swift
 //  CustomCursor
 //
-//  Created by 박병호 on 5/22/24.
+//  Created by 박병호 on 5/23/24.
 //
 
-import Cocoa
+import AppKit
 
-class MenuIconManager {
-    var statusItem: NSStatusItem?
+struct AppUIVisbleConfigure {
+    var apaName : String?
+    var isShowDockIcon : Bool?
+    var appIconImage : NSImage?
     
-    init() {
-        print("MenuIconManager init")
+    var isShowMenuIcon : Bool?
+    var appMenuIconImage : NSImage?
+}
+
+public class AppUIVisbleModule {
+    private var configure : AppUIVisbleConfigure?
+    private var statusItem: NSStatusItem?
+    
+//    init(configure: AppUIVisbleConfigure?) {
+//        self.configure = configure
+//    }
+    
+    func setVisble(_ configure: AppUIVisbleConfigure){
+        // apaName
+        
+        // isShowDockIcon
+        NSApp.setActivationPolicy(.accessory)
+        // appIconImage
+        
+        if configure.isShowMenuIcon ?? false {
+            self.showAppMenuIcon()
+        }
+        // appMenuIconImage
     }
     
     func showAppMenuIcon() {
+        print("[AppUIVisbleModule] showAppMenuIcon")
         // 상태 아이템 생성
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         
@@ -32,7 +56,7 @@ class MenuIconManager {
         statusItem?.menu = menu
     }
     
-    //
+    // test func
     @objc func sayHello() {
         let alert = NSAlert()
         alert.messageText = "Hello!"
