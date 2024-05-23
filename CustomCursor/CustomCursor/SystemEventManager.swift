@@ -8,7 +8,13 @@
 import Foundation
 import AppKit
 
+protocol SystemEventManagerDelegate: AnyObject {
+    func actionGlobalMouseEvent(event:NSEvent?)
+}
+
 public class SystemEventManager {
+    var delegate : SystemEventManagerDelegate?
+    
     private var eventListener : SystemMouseEventListenerModule?
     
     func initalize(){
@@ -16,7 +22,10 @@ public class SystemEventManager {
             
         // global mouse event
         eventListener = SystemMouseEventListenerModule(globalEventMask: .mouseMoved, globalHandler: { (mouseEvent: NSEvent?) in
-//            print("global event monitor")
+            
+            
+            
+            self.delegate?.actionGlobalMouseEvent(event: mouseEvent)
         })
         
         eventListener?.startGlobalMouseEventListener()

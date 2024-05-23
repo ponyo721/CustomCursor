@@ -8,7 +8,7 @@
 import Cocoa
 import AppKit
 
-public class CustomCursorManager {
+public class CustomCursorManager : SystemEventManagerDelegate{
     private let uiManager: UIManager! = UIManager()
     private let systemEventManager: SystemEventManager! = SystemEventManager()
     
@@ -22,6 +22,17 @@ public class CustomCursorManager {
         print("[CustomCursorManager] initalizeApplication")
         
         uiManager.initalize()
+        systemEventManager.delegate = self
         systemEventManager.initalize()
+    }
+    
+    func actionGlobalMouseEvent(event:NSEvent?){
+        print("[CustomCursorManager] actionGlobalMouseEvent")
+      
+
+        uiManager.mouseTrakingWindow.window?.setFrameOrigin(NSEvent.mouseLocation)
+//        uiManager.mouseTrakingWindow.window?.setFrameOrigin(event!.locationInWindow)
+        
+        
     }
 }

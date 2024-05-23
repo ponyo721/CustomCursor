@@ -14,7 +14,7 @@ public class MouseAnimationWC : NSWindowController, NSWindowDelegate{
     }
     
     public override func windowDidLoad() {
-        print("windowDidLoad")
+        print("windowDidLoad \(String(describing: self.window?.title))")
     }
     
     public func windowShouldClose(_ sender: NSWindow) -> Bool {
@@ -23,7 +23,4 @@ public class MouseAnimationWC : NSWindowController, NSWindowDelegate{
         return true
     }
     
-    @IBAction func actionBtn(_ sender: Any) {
-        print("actionBtn")
-    }
 }

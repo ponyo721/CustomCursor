@@ -28,6 +28,12 @@ class UIManager {
         
         // window
         mouseTrakingWindow.showWindow(self)
+        mouseTrakingWindow.window?.level = .floating
+        mouseTrakingWindow.window?.isOpaque = false
+        mouseTrakingWindow.window?.backgroundColor = .clear
+        mouseTrakingWindow.window?.ignoresMouseEvents = true // 마우스 이벤트 무시
+        
+        mouseTrakingWindow.window?.makeKeyAndOrderFront(nil)
     }
     
     @objc func sayBhpark() {
