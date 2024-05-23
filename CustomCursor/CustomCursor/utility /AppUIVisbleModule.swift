@@ -14,6 +14,14 @@ struct AppUIVisbleConfigure {
     
     var isShowMenuIcon : Bool?
     var appMenuIconImage : NSImage?
+    var appMenuItems : [MenuItemConfigure]?
+}
+
+struct MenuItemConfigure {
+    var itemTitle : String!
+    var keyEquivalent : String!
+    var action : String!
+    var actionTarget : AnyObject?
 }
 
 public class AppUIVisbleModule {
@@ -24,49 +32,43 @@ public class AppUIVisbleModule {
 //        self.configure = configure
 //    }
     
-    func setVisble(_ configure: AppUIVisbleConfigure){
+    func setVisble(configure: AppUIVisbleConfigure){
+        self.configure = configure
         // apaName
         
-        // isShowDockIcon
-        NSApp.setActivationPolicy(.accessory)
+        if self.configure?.isShowDockIcon ?? false {
+//            NSApp.setActivationPolicy(.accessory)
+        }
         // appIconImage
         
-        if configure.isShowMenuIcon ?? false {
-            self.showAppMenuIcon()
+        if self.configure?.isShowMenuIcon ?? false {
+            self.showAppMenuIconWithItems(items:self.configure!.appMenuItems!)
         }
         // appMenuIconImage
     }
     
-    func showAppMenuIcon() {
-        print("[AppUIVisbleModule] showAppMenuIcon")
+    func showAppMenuIconWithItems(items: [MenuItemConfigure]) {
+        print("[AppUIVisbleModule] showAppMenuIconWithItems")
         // 상태 아이템 생성
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         
         if let button = statusItem?.button {
-            button.image = NSImage(systemSymbolName: "star.fill", accessibilityDescription: "Menu Icon")
+            if self.configure?.appMenuIconImage == nil {
+                button.image = NSImage(systemSymbolName: "highlighter", accessibilityDescription: "Menu Icon")
+            }else {
+                button.image = self.configure!.appMenuIconImage
+            }
         }
         
         // 메뉴 생성
         let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: "Say Hello", action: #selector(sayHello), keyEquivalent: "H"))
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "q"))
-        for menu in menu.items {
-            menu.target = self
+        for item in items {
+            let menuItem = NSMenuItem(title: item.itemTitle, action: Selector(item.action), keyEquivalent: item.keyEquivalent)
+            menuItem.target = item.actionTarget
+            menu.addItem(menuItem)
         }
         
         // 메뉴 아이템에 메뉴 설정
         statusItem?.menu = menu
-    }
-    
-    // test func
-    @objc func sayHello() {
-        let alert = NSAlert()
-        alert.messageText = "Hello!"
-        alert.runModal()
-    }
-    
-    @objc func quit() {
-        NSApplication.shared.terminate(nil)
     }
 }
