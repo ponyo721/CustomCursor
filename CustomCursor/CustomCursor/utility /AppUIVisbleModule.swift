@@ -32,7 +32,9 @@ public class AppUIVisbleModule {
 //        self.configure = configure
 //    }
     
-    func setVisble(configure: AppUIVisbleConfigure){
+    func setVisbleWithConfigure(configure: AppUIVisbleConfigure){
+        print("[AppUIVisbleModule] setVisbleWithConfigure")
+        
         self.configure = configure
         // apaName
         

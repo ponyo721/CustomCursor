@@ -15,10 +15,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        #if DEBUG
-        window.level = .floating
-        window.close()
-        #endif
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

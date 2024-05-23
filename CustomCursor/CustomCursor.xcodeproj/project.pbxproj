@@ -10,6 +10,8 @@
 		25227A362BFF177000D6739B /* SystemEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25227A352BFF177000D6739B /* SystemEventManager.swift */; };
 		25227A382BFF178C00D6739B /* AppUIVisbleModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25227A372BFF178C00D6739B /* AppUIVisbleModule.swift */; };
 		25227A3A2BFF179B00D6739B /* SystemMouseEventListenerModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25227A392BFF179B00D6739B /* SystemMouseEventListenerModule.swift */; };
+		25227A432BFF7FBC00D6739B /* MouseAnimationWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25227A422BFF7FBC00D6739B /* MouseAnimationWC.swift */; };
+		25227A452BFF80AD00D6739B /* MouseAnimationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25227A442BFF80AD00D6739B /* MouseAnimationWindow.xib */; };
 		2524D08A2BFD65D7000FD749 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0892BFD65D7000FD749 /* AppDelegate.swift */; };
 		2524D08C2BFD65D8000FD749 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2524D08B2BFD65D8000FD749 /* Assets.xcassets */; };
 		2524D08F2BFD65D8000FD749 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2524D08E2BFD65D8000FD749 /* Base */; };
@@ -41,6 +43,8 @@
 		25227A352BFF177000D6739B /* SystemEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemEventManager.swift; sourceTree = "<group>"; };
 		25227A372BFF178C00D6739B /* AppUIVisbleModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUIVisbleModule.swift; sourceTree = "<group>"; };
 		25227A392BFF179B00D6739B /* SystemMouseEventListenerModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMouseEventListenerModule.swift; sourceTree = "<group>"; };
+		25227A422BFF7FBC00D6739B /* MouseAnimationWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseAnimationWC.swift; sourceTree = "<group>"; };
+		25227A442BFF80AD00D6739B /* MouseAnimationWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MouseAnimationWindow.xib; sourceTree = "<group>"; };
 		2524D0862BFD65D7000FD749 /* CustomCursor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomCursor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2524D0892BFD65D7000FD749 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2524D08B2BFD65D8000FD749 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25227A3B2BFF79C000D6739B /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				25227A422BFF7FBC00D6739B /* MouseAnimationWC.swift */,
+				25227A442BFF80AD00D6739B /* MouseAnimationWindow.xib */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
 		2524D07D2BFD65D6000FD749 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +116,7 @@
 		2524D0882BFD65D7000FD749 /* CustomCursor */ = {
 			isa = PBXGroup;
 			children = (
+				25227A3B2BFF79C000D6739B /* ui */,
 				2524D0B52BFD66AD000FD749 /* utility  */,
 				2524D0892BFD65D7000FD749 /* AppDelegate.swift */,
 				2524D0B82BFD6BA5000FD749 /* CustomCursorManager.swift */,
@@ -246,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2524D08C2BFD65D8000FD749 /* Assets.xcassets in Resources */,
+				25227A452BFF80AD00D6739B /* MouseAnimationWindow.xib in Resources */,
 				2524D08F2BFD65D8000FD749 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2524D0B92BFD6BA5000FD749 /* CustomCursorManager.swift in Sources */,
+				25227A432BFF7FBC00D6739B /* MouseAnimationWC.swift in Sources */,
 				2524D08A2BFD65D7000FD749 /* AppDelegate.swift in Sources */,
 				25227A3A2BFF179B00D6739B /* SystemMouseEventListenerModule.swift in Sources */,
 				2524D0B32BFD6683000FD749 /* UIManager.swift in Sources */,
