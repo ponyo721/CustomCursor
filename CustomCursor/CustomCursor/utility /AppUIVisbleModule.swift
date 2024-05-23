@@ -51,6 +51,9 @@ public class AppUIVisbleModule {
         menu.addItem(NSMenuItem(title: "Say Hello", action: #selector(sayHello), keyEquivalent: "H"))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "q"))
+        for menu in menu.items {
+            menu.target = self
+        }
         
         // 메뉴 아이템에 메뉴 설정
         statusItem?.menu = menu
