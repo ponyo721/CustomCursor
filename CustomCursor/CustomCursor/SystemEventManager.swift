@@ -20,7 +20,7 @@ public class SystemEventManager {
         print("[SystemEventManager] initalize")
             
         // global mouse event
-        eventListener = SystemMouseEventListenerModule(globalEventMask: [.mouseMoved, .leftMouseDragged, .rightMouseDragged, .leftMouseDown, .leftMouseUp], globalHandler: { (mouseEvent: NSEvent?) in
+        eventListener = SystemMouseEventListenerModule(globalEventMask: [.mouseMoved, .leftMouseDragged, .rightMouseDragged, .leftMouseDown, .leftMouseUp, .otherMouseDragged], globalHandler: { (mouseEvent: NSEvent?) in
             
             self.delegate?.actionGlobalMouseEvent(event: mouseEvent)
         })

@@ -34,6 +34,13 @@ class UIManager {
         mouseTrackingWindow.window?.ignoresMouseEvents = true // 마우스 이벤트 무시
         
         mouseTrackingWindow.window?.makeKeyAndOrderFront(nil)
+        
+//        let circleView : CircleView? = CircleView(frame: mouseTrackingWindow.window!.contentView!.bounds)
+//        mouseTrackingWindow.window?.contentView?.addSubview(circleView!)
+        
+        let rotatingRingView : RotatingRingView? = RotatingRingView(frame: mouseTrackingWindow.window!.contentView!.bounds)
+        mouseTrackingWindow.window?.contentView?.addSubview(rotatingRingView!)
+        
     }
     
     @objc func sayBhpark() {
