@@ -29,10 +29,9 @@ public class CustomCursorManager : SystemEventManagerDelegate{
     func actionGlobalMouseEvent(event:NSEvent?){
         print("[CustomCursorManager] actionGlobalMouseEvent")
       
-
-        uiManager.mouseTrakingWindow.window?.setFrameOrigin(NSEvent.mouseLocation)
-//        uiManager.mouseTrakingWindow.window?.setFrameOrigin(event!.locationInWindow)
+        let positionX : CGFloat = NSEvent.mouseLocation.x - ((uiManager.mouseTrackingWindow.window?.frame.size.width ?? 1)/2)
+        let positionY : CGFloat = NSEvent.mouseLocation.y - ((uiManager.mouseTrackingWindow.window?.frame.size.height ?? 1)/2)
         
-        
+        uiManager.mouseTrackingWindow.window?.setFrameOrigin(NSMakePoint(positionX, positionY))
     }
 }

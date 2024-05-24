@@ -14,16 +14,13 @@ protocol SystemEventManagerDelegate: AnyObject {
 
 public class SystemEventManager {
     var delegate : SystemEventManagerDelegate?
-    
     private var eventListener : SystemMouseEventListenerModule?
     
     func initalize(){
         print("[SystemEventManager] initalize")
             
         // global mouse event
-        eventListener = SystemMouseEventListenerModule(globalEventMask: .mouseMoved, globalHandler: { (mouseEvent: NSEvent?) in
-            
-            
+        eventListener = SystemMouseEventListenerModule(globalEventMask: [.mouseMoved, .leftMouseDragged, .rightMouseDragged, .leftMouseDown, .leftMouseUp], globalHandler: { (mouseEvent: NSEvent?) in
             
             self.delegate?.actionGlobalMouseEvent(event: mouseEvent)
         })

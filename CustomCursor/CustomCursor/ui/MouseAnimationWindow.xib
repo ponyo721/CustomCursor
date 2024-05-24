@@ -14,14 +14,14 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="115" height="70"/>
+            <rect key="contentRect" x="196" y="240" width="48" height="44"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1496" height="933"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="115" height="70"/>
+                <rect key="frame" x="0.0" y="0.0" width="48" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vQ5-8K-eGe">
-                        <rect key="frame" x="13" y="18" width="48" height="48"/>
+                        <rect key="frame" x="0.0" y="-5" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSColorPanel" id="cwI-e8-PfO"/>
                     </imageView>
@@ -30,7 +30,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="wPe-hQ-ngz"/>
             </connections>
-            <point key="canvasLocation" x="31.5" y="31"/>
+            <point key="canvasLocation" x="-2" y="38"/>
         </window>
     </objects>
     <resources>
