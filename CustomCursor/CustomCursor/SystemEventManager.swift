@@ -42,7 +42,8 @@ public class SystemEventManager : SystemMouseEventListenerModuleDelegate {
     }
     
     func actionLocalMouseEvent(event:NSEvent?){
-        print("[SystemEventManager] actionLocalMouseEvent")
+//        print("[SystemEventManager] actionLocalMouseEvent")
+        
         self.delegate?.actionLocalMouseEvent(event: event)
     }
 }

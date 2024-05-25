@@ -118,7 +118,7 @@ public class CircleView : NSView{
             .red.withAlphaComponent(0.2), .orange.withAlphaComponent(0.2), .yellow.withAlphaComponent(0.2), .green.withAlphaComponent(0.2), .blue.withAlphaComponent(0.2), .purple.withAlphaComponent(0.2)
         ]
         
-        guard let context = NSGraphicsContext.current?.cgContext else { return }
+        guard (NSGraphicsContext.current?.cgContext) != nil else { return }
         
         let lineWidth: CGFloat = 20.0
         let outerRadius = min(bounds.width, bounds.height) / 2 - lineWidth / 2

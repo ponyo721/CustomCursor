@@ -28,13 +28,13 @@ public class CustomCursorManager : SystemEventManagerDelegate{
     
     // SystemEventManager delegate
     func actionGlobalMouseEvent(event:NSEvent?){
-        print("[CustomCursorManager] actionGlobalMouseEvent")
+//        print("[CustomCursorManager] actionGlobalMouseEvent")
       
         uiManager.setWindowPositionOnMouse()
     }
     
     func actionLocalMouseEvent(event:NSEvent?){
-        print("[CustomCursorManager] actionLocalMouseEvent")
+//        print("[CustomCursorManager] actionLocalMouseEvent")
         
         uiManager.setWindowPositionOnMouse()
     }

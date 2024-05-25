@@ -14,11 +14,11 @@ public class MouseAnimationWC : NSWindowController, NSWindowDelegate{
     }
     
     public override func windowDidLoad() {
-        print("windowDidLoad \(String(describing: self.window?.title))")
+        print("[MouseAnimationWC] windowDidLoad")
     }
     
     public func windowShouldClose(_ sender: NSWindow) -> Bool {
-        print("windowShouldClose")
+        print("[MouseAnimationWC] windowShouldClose")
         
         return true
     }

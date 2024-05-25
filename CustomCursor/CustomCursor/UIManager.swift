@@ -30,8 +30,8 @@ class UIManager {
         mouseTrackingWindow.window?.backgroundColor = .clear
         mouseTrackingWindow.window?.ignoresMouseEvents = true // 마우스 이벤트 무시
         
-        mouseTrackingWindow.window?.makeKeyAndOrderFront(nil)
-        mouseTrackingWindow.showWindow(self)
+//        mouseTrackingWindow.window?.makeKeyAndOrderFront(nil)
+        mouseTrackingWindow.showWindow(nil)
         self.setWindowPositionOnMouse()
         
         // mouse tracking window sub view
@@ -45,6 +45,21 @@ class UIManager {
         
     }
     
+    // MARK: - private method -
+    
+    func setWindowPositionOnMouse(){
+//        print("[UIManager] setWindowPositionOnMouse")
+        
+        DispatchQueue.main.async {
+            let positionX : CGFloat = NSEvent.mouseLocation.x - ((self.mouseTrackingWindow.window?.frame.size.width ?? 1)/2)
+            let positionY : CGFloat = NSEvent.mouseLocation.y - ((self.mouseTrackingWindow.window?.frame.size.height ?? 1)/2)
+            
+            self.mouseTrackingWindow.window?.setFrameOrigin(NSMakePoint(positionX, positionY))
+        }
+    }
+    
+    // MARK: - test method -
+    
     @objc func sayBhpark() {
         let alert = NSAlert()
         alert.messageText = "bhpark!"
@@ -54,16 +69,5 @@ class UIManager {
     @objc func appTerminate() {
         print("appTerminate")
         NSApp.terminate(nil)
-    }
-    
-    //
-    
-    func setWindowPositionOnMouse(){
-        DispatchQueue.main.async {
-            let positionX : CGFloat = NSEvent.mouseLocation.x - ((self.mouseTrackingWindow.window?.frame.size.width ?? 1)/2)
-            let positionY : CGFloat = NSEvent.mouseLocation.y - ((self.mouseTrackingWindow.window?.frame.size.height ?? 1)/2)
-            
-            self.mouseTrackingWindow.window?.setFrameOrigin(NSMakePoint(positionX, positionY))
-        }
     }
 }
