@@ -22,23 +22,25 @@ class UIManager {
         
         // AppUIVisbleModule create && show menu
         appUIVisbleModule = AppUIVisbleModule()
-        DispatchQueue.main.async {
-            self.appUIVisbleModule?.setVisbleWithConfigure(configure:configure)
-        }
+        self.appUIVisbleModule?.setVisbleWithConfigure(configure:configure)
         
         // mouse tracking window
-        mouseTrackingWindow.showWindow(self)
         mouseTrackingWindow.window?.level = .floating
         mouseTrackingWindow.window?.isOpaque = false
         mouseTrackingWindow.window?.backgroundColor = .clear
         mouseTrackingWindow.window?.ignoresMouseEvents = true // 마우스 이벤트 무시
         
         mouseTrackingWindow.window?.makeKeyAndOrderFront(nil)
+        mouseTrackingWindow.showWindow(self)
+        self.setWindowPositionOnMouse()
         
-//        let circleView : CircleView? = CircleView(frame: mouseTrackingWindow.window!.contentView!.bounds)
-//        mouseTrackingWindow.window?.contentView?.addSubview(circleView!)
-        
+        // mouse tracking window sub view
         let rotatingRingView : RotatingRingView? = RotatingRingView(frame: mouseTrackingWindow.window!.contentView!.bounds)
+        rotatingRingView?.ringRadius = CYCLE_RING_RADIUS.SMALL
+        rotatingRingView?.ringLineWidth = 6
+        rotatingRingView?.ringLineAlpha = 0.4
+        rotatingRingView?.setupLayer()
+        
         mouseTrackingWindow.window?.contentView?.addSubview(rotatingRingView!)
         
     }
@@ -52,5 +54,16 @@ class UIManager {
     @objc func appTerminate() {
         print("appTerminate")
         NSApp.terminate(nil)
+    }
+    
+    //
+    
+    func setWindowPositionOnMouse(){
+        DispatchQueue.main.async {
+            let positionX : CGFloat = NSEvent.mouseLocation.x - ((self.mouseTrackingWindow.window?.frame.size.width ?? 1)/2)
+            let positionY : CGFloat = NSEvent.mouseLocation.y - ((self.mouseTrackingWindow.window?.frame.size.height ?? 1)/2)
+            
+            self.mouseTrackingWindow.window?.setFrameOrigin(NSMakePoint(positionX, positionY))
+        }
     }
 }
