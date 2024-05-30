@@ -26,7 +26,7 @@ class UIManager {
         self.appUIVisbleModule?.setVisbleWithConfigure(configure:configure)
         
         // mouse tracking window
-        mouseTrackingWindow.window?.level = .floating
+        mouseTrackingWindow.window?.level = .screenSaver
         mouseTrackingWindow.window?.isOpaque = false
         mouseTrackingWindow.window?.backgroundColor = .clear
         mouseTrackingWindow.window?.ignoresMouseEvents = true // 마우스 이벤트 무시
