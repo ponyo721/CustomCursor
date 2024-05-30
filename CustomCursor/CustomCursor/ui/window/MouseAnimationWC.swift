@@ -9,7 +9,7 @@ import Cocoa
 
 public class MouseAnimationWC : NSWindowController, NSWindowDelegate{
     
-    public override var windowNibName: NSNib.Name? {
+    public override var windowNibName: NSNib.Name? {    // load custom xib object
         return NSNib.Name("MouseAnimationWindow")
     }
     

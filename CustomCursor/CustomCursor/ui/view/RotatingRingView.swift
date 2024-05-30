@@ -9,8 +9,8 @@ import Cocoa
 
 class RotatingRingView: NSView {
     public var ringRadius : CYCLE_RING_RADIUS = CYCLE_RING_RADIUS.MIDDLE
-    public var ringLineWidth : CGFloat = 7
-    public var ringLineAlpha : CGFloat = 0.3    // 0.1 ~ 1
+    public var ringLineWidth : CGFloat = DEFAULT_RING_LINE_WIDTH
+    public var ringLineAlpha : CGFloat = DEFAULT_RING_LINE_ALPHA    // 0.1 ~ 1
     
     public func setupLayer() {
         self.wantsLayer = true

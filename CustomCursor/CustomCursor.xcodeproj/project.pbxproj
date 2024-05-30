@@ -23,6 +23,8 @@
 		2524D0A62BFD65D8000FD749 /* CustomCursorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0A52BFD65D8000FD749 /* CustomCursorUITestsLaunchTests.swift */; };
 		2524D0B32BFD6683000FD749 /* UIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0B22BFD6683000FD749 /* UIManager.swift */; };
 		2524D0B92BFD6BA5000FD749 /* CustomCursorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0B82BFD6BA5000FD749 /* CustomCursorManager.swift */; };
+		25D8FA592C0451CD0090F1FB /* SettingWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D8FA582C0451CD0090F1FB /* SettingWC.swift */; };
+		25D8FA5B2C0451DD0090F1FB /* SettingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25D8FA5A2C0451DD0090F1FB /* SettingWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		2524D0A52BFD65D8000FD749 /* CustomCursorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCursorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2524D0B22BFD6683000FD749 /* UIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIManager.swift; sourceTree = "<group>"; };
 		2524D0B82BFD6BA5000FD749 /* CustomCursorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCursorManager.swift; sourceTree = "<group>"; };
+		25D8FA582C0451CD0090F1FB /* SettingWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWC.swift; sourceTree = "<group>"; };
+		25D8FA5A2C0451DD0090F1FB /* SettingWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,8 @@
 			children = (
 				25227A422BFF7FBC00D6739B /* MouseAnimationWC.swift */,
 				25227A442BFF80AD00D6739B /* MouseAnimationWindow.xib */,
+				25D8FA582C0451CD0090F1FB /* SettingWC.swift */,
+				25D8FA5A2C0451DD0090F1FB /* SettingWindow.xib */,
 			);
 			path = window;
 			sourceTree = "<group>";
@@ -284,6 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25D8FA5B2C0451DD0090F1FB /* SettingWindow.xib in Resources */,
 				2524D08C2BFD65D8000FD749 /* Assets.xcassets in Resources */,
 				25227A452BFF80AD00D6739B /* MouseAnimationWindow.xib in Resources */,
 				2524D08F2BFD65D8000FD749 /* Base in Resources */,
@@ -319,6 +326,7 @@
 				2524D08A2BFD65D7000FD749 /* AppDelegate.swift in Sources */,
 				25227A3A2BFF179B00D6739B /* SystemMouseEventListenerModule.swift in Sources */,
 				2524D0B32BFD6683000FD749 /* UIManager.swift in Sources */,
+				25D8FA592C0451CD0090F1FB /* SettingWC.swift in Sources */,
 				25227A362BFF177000D6739B /* SystemEventManager.swift in Sources */,
 				25227A382BFF178C00D6739B /* AppUIVisbleModule.swift in Sources */,
 			);

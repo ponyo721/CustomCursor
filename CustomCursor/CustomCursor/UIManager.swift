@@ -10,12 +10,13 @@ import Cocoa
 class UIManager {
     private var appUIVisbleModule : AppUIVisbleModule?
     let mouseTrackingWindow = MouseAnimationWC(windowNibName: "MyWindowController")
+    var settingWC : SettingWC?
     
     func initalize(){
         print("[UIManager] initalize")
         
         //  app menu item configure
-        let menuItems = [MenuItemConfigure(itemTitle: "menuTitle", keyEquivalent: "k", action: "sayBhpark", actionTarget: self), MenuItemConfigure(itemTitle: "terminate", keyEquivalent: "", action: "appTerminate", actionTarget: self)]
+        let menuItems = [MenuItemConfigure(itemTitle: "menuTitle", keyEquivalent: "k", action: "sayBhpark", actionTarget: self), MenuItemConfigure(itemTitle: "settings...", keyEquivalent: "", action: "actionShowSettings", actionTarget: self), MenuItemConfigure(itemTitle: "terminate", keyEquivalent: "", action: "appTerminate", actionTarget: self)]
         
         //  app menu configure
         let configure : AppUIVisbleConfigure! = AppUIVisbleConfigure(apaName: "", isShowDockIcon: false, appIconImage: nil, isShowMenuIcon: true, appMenuIconImage: NSImage(systemSymbolName: "visionpro", accessibilityDescription: nil), appMenuItems: menuItems)
@@ -59,6 +60,13 @@ class UIManager {
     }
     
     // MARK: - test method -
+    
+    @objc func actionShowSettings(){
+        if settingWC == nil {
+            settingWC = SettingWC(windowNibName: "SettingWindow")
+        }
+        settingWC?.showWindow(nil)
+    }
     
     @objc func sayBhpark() {
         let alert = NSAlert()
