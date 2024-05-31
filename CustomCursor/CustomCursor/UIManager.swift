@@ -8,6 +8,9 @@
 import Cocoa
 
 class UIManager : SettingWCDelegate{
+    public var ringRadius : CYCLE_RING_RADIUS = CYCLE_RING_RADIUS.MIDDLE
+    public var ringLineWidth : CGFloat = DEFAULT_RING_LINE_WIDTH
+    public var ringLineAlpha : CGFloat = DEFAULT_RING_LINE_ALPHA
     
     private var appUIVisbleModule : AppUIVisbleModule?
     let mouseTrackingWindow = MouseAnimationWC(windowNibName: "MyWindowController")
@@ -38,9 +41,9 @@ class UIManager : SettingWCDelegate{
         
         // mouse tracking window sub view
         let rotatingRingView : RotatingRingView? = RotatingRingView(frame: mouseTrackingWindow.window!.contentView!.bounds)
-        rotatingRingView?.ringRadius = CYCLE_RING_RADIUS.SMALL
-        rotatingRingView?.ringLineWidth = DEFAULT_RING_LINE_WIDTH
-        rotatingRingView?.ringLineAlpha = DEFAULT_RING_LINE_ALPHA
+        rotatingRingView?.ringRadius = ringRadius
+        rotatingRingView?.ringLineWidth = ringLineWidth
+        rotatingRingView?.ringLineAlpha = ringLineAlpha
         rotatingRingView?.setupLayer()
         
         mouseTrackingWindow.window?.contentView?.addSubview(rotatingRingView!)
@@ -81,6 +84,7 @@ class UIManager : SettingWCDelegate{
             settingWC = SettingWC(windowNibName: "SettingWindow")
             settingWC?.delegate = self
         }
+        settingWC?.window?.level = .floating
         settingWC?.showWindow(nil)
     }
     
@@ -98,17 +102,19 @@ class UIManager : SettingWCDelegate{
     // MARK: - private method -
     func actionSelectRadius(_ raduis: CYCLE_RING_RADIUS) {
         print("[UIManager] actionSelectRadius")
-        
-        self.reloadView(radius: raduis, width: DEFAULT_RING_LINE_WIDTH, alpha: DEFAULT_RING_LINE_ALPHA)
+        ringRadius = raduis
+        self.reloadView(radius: ringRadius, width: ringLineWidth, alpha: ringLineAlpha)
     }
     
     func actionRingWidthSlider(_ value: CGFloat) {
         print("[UIManager] actionRingWidthSlider")
-        self.reloadView(radius: CYCLE_RING_RADIUS.SMALL, width: value, alpha: DEFAULT_RING_LINE_ALPHA)
+        ringLineWidth = value
+        self.reloadView(radius: ringRadius, width: ringLineWidth, alpha: ringLineAlpha)
     }
     
     func actionRingAlphaSlider(_ value: CGFloat) {
         print("[UIManager] actionRingAlphaSlider")
-        self.reloadView(radius: CYCLE_RING_RADIUS.SMALL, width: DEFAULT_RING_LINE_WIDTH, alpha: value)
+        ringLineAlpha = value
+        self.reloadView(radius: ringRadius, width: ringLineWidth, alpha: ringLineAlpha)
     }
 }
