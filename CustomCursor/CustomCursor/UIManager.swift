@@ -81,6 +81,9 @@ class UIManager : SettingWCDelegate{
         if settingWC == nil {
             settingWC = SettingWC(windowNibName: "SettingWindow")
             settingWC?.delegate = self
+            settingWC?.mouseRingRadius = sharedData.effectRingInfo.ringRadius
+            settingWC?.mouseRingWidth = sharedData.effectRingInfo.ringLineWidth
+            settingWC?.mouseRingAlpha = sharedData.effectRingInfo.ringLineAlpha
         }
         settingWC?.window?.level = .floating
         settingWC?.showWindow(nil)
