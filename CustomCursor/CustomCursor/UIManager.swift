@@ -7,7 +7,8 @@
 
 import Cocoa
 
-class UIManager {
+class UIManager : SettingWCDelegate{
+    
     private var appUIVisbleModule : AppUIVisbleModule?
     let mouseTrackingWindow = MouseAnimationWC(windowNibName: "MyWindowController")
     var settingWC : SettingWC?
@@ -38,8 +39,8 @@ class UIManager {
         // mouse tracking window sub view
         let rotatingRingView : RotatingRingView? = RotatingRingView(frame: mouseTrackingWindow.window!.contentView!.bounds)
         rotatingRingView?.ringRadius = CYCLE_RING_RADIUS.SMALL
-        rotatingRingView?.ringLineWidth = 6
-        rotatingRingView?.ringLineAlpha = 0.4
+        rotatingRingView?.ringLineWidth = DEFAULT_RING_LINE_WIDTH
+        rotatingRingView?.ringLineAlpha = DEFAULT_RING_LINE_ALPHA
         rotatingRingView?.setupLayer()
         
         mouseTrackingWindow.window?.contentView?.addSubview(rotatingRingView!)
@@ -59,11 +60,26 @@ class UIManager {
         }
     }
     
+    func reloadView(radius:CYCLE_RING_RADIUS, width:CGFloat, alpha:CGFloat){
+        DispatchQueue.main.async {
+            self.mouseTrackingWindow.window?.contentView?.subviews.removeAll()
+            
+            let rotatingRingView : RotatingRingView? = RotatingRingView(frame: self.mouseTrackingWindow.window!.contentView!.bounds)
+            rotatingRingView?.ringRadius = radius
+            rotatingRingView?.ringLineWidth = width
+            rotatingRingView?.ringLineAlpha = alpha
+            rotatingRingView?.setupLayer()
+            
+            self.mouseTrackingWindow.window?.contentView?.addSubview(rotatingRingView!)
+        }
+    }
+    
     // MARK: - test method -
     
     @objc func actionShowSettings(){
         if settingWC == nil {
             settingWC = SettingWC(windowNibName: "SettingWindow")
+            settingWC?.delegate = self
         }
         settingWC?.showWindow(nil)
     }
@@ -77,5 +93,22 @@ class UIManager {
     @objc func appTerminate() {
         print("appTerminate")
         NSApp.terminate(nil)
+    }
+    
+    // MARK: - private method -
+    func actionSelectRadius(_ raduis: CYCLE_RING_RADIUS) {
+        print("[UIManager] actionSelectRadius")
+        
+        self.reloadView(radius: raduis, width: DEFAULT_RING_LINE_WIDTH, alpha: DEFAULT_RING_LINE_ALPHA)
+    }
+    
+    func actionRingWidthSlider(_ value: CGFloat) {
+        print("[UIManager] actionRingWidthSlider")
+        self.reloadView(radius: CYCLE_RING_RADIUS.SMALL, width: value, alpha: DEFAULT_RING_LINE_ALPHA)
+    }
+    
+    func actionRingAlphaSlider(_ value: CGFloat) {
+        print("[UIManager] actionRingAlphaSlider")
+        self.reloadView(radius: CYCLE_RING_RADIUS.SMALL, width: DEFAULT_RING_LINE_WIDTH, alpha: value)
     }
 }
