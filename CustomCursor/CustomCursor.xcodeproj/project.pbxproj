@@ -23,6 +23,7 @@
 		2524D0A62BFD65D8000FD749 /* CustomCursorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0A52BFD65D8000FD749 /* CustomCursorUITestsLaunchTests.swift */; };
 		2524D0B32BFD6683000FD749 /* UIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0B22BFD6683000FD749 /* UIManager.swift */; };
 		2524D0B92BFD6BA5000FD749 /* CustomCursorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0B82BFD6BA5000FD749 /* CustomCursorManager.swift */; };
+		25D40B262C096C5900141C6D /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D40B252C096C5900141C6D /* SharedData.swift */; };
 		25D8FA592C0451CD0090F1FB /* SettingWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D8FA582C0451CD0090F1FB /* SettingWC.swift */; };
 		25D8FA5B2C0451DD0090F1FB /* SettingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25D8FA5A2C0451DD0090F1FB /* SettingWindow.xib */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		2524D0A52BFD65D8000FD749 /* CustomCursorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCursorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2524D0B22BFD6683000FD749 /* UIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIManager.swift; sourceTree = "<group>"; };
 		2524D0B82BFD6BA5000FD749 /* CustomCursorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCursorManager.swift; sourceTree = "<group>"; };
+		25D40B252C096C5900141C6D /* SharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
 		25D8FA582C0451CD0090F1FB /* SettingWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWC.swift; sourceTree = "<group>"; };
 		25D8FA5A2C0451DD0090F1FB /* SettingWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,6 +155,7 @@
 				2524D0B82BFD6BA5000FD749 /* CustomCursorManager.swift */,
 				25227A352BFF177000D6739B /* SystemEventManager.swift */,
 				2524D0B22BFD6683000FD749 /* UIManager.swift */,
+				25D40B252C096C5900141C6D /* SharedData.swift */,
 				2524D08B2BFD65D8000FD749 /* Assets.xcassets */,
 				2524D08D2BFD65D8000FD749 /* MainMenu.xib */,
 				2524D0902BFD65D8000FD749 /* CustomCursor.entitlements */,
@@ -318,6 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25D40B262C096C5900141C6D /* SharedData.swift in Sources */,
 				25227A4B2C002DEC00D6739B /* CircleView.swift in Sources */,
 				25227A4F2C00C3BA00D6739B /* SubViewCommonEnum.swift in Sources */,
 				2524D0B92BFD6BA5000FD749 /* CustomCursorManager.swift in Sources */,

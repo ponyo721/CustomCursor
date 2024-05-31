@@ -15,7 +15,7 @@ let DEFAULT_RING_LINE_ALPHA : CGFloat = 0.3
 let MAX_RING_LINE_ALPHA : CGFloat = 1
 let MIN_RING_LINE_ALPHA : CGFloat = 0.1
 
-enum CYCLE_RING_RADIUS : CGFloat {
+enum CYCLE_RING_RADIUS : CGFloat, Codable {
     case LARGE = 2
     case MIDDLE = 3
     case SMALL = 4

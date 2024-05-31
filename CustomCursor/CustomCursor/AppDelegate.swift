@@ -10,6 +10,7 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     let customCursorManager: CustomCursorManager! = CustomCursorManager()
+    let sharedData : SharedData = SharedData.sharedData
     
     @IBOutlet var window: NSWindow!
     
@@ -19,6 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+        
+        sharedData.saveData()
     }
     
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
