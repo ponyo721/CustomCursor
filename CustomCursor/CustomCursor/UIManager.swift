@@ -13,15 +13,17 @@ class UIManager : SettingWCDelegate{
     private var appUIVisbleModule : AppUIVisbleModule?
     let mouseTrackingWindow = MouseAnimationWC(windowNibName: "MyWindowController")
     var settingWC : SettingWC?
+    var aboutWC : AboutWC?
     
     func initalize(){
         print("[UIManager] initalize")
+        let appName :String = Bundle.main.infoDictionary!["CFBundleName"] as! String
         
         //  app menu item configure
-        let menuItems = [MenuItemConfigure(itemTitle: "menuTitle", keyEquivalent: "k", action: "sayBhpark", actionTarget: self), MenuItemConfigure(itemTitle: "settings...", keyEquivalent: "", action: "actionShowSettings", actionTarget: self), MenuItemConfigure(itemTitle: "terminate", keyEquivalent: "", action: "appTerminate", actionTarget: self)]
+        let menuItems = [MenuItemConfigure(itemTitle: "About " + appName, keyEquivalent: "", action: "showAbout", actionTarget: self), MenuItemConfigure(itemTitle: "settings...", keyEquivalent: "", action: "actionShowSettings", actionTarget: self), MenuItemConfigure(itemTitle: "terminate", keyEquivalent: "", action: "appTerminate", actionTarget: self)]
         
         //  app menu configure
-        let configure : AppUIVisbleConfigure! = AppUIVisbleConfigure(apaName: "", isShowDockIcon: false, appIconImage: nil, isShowMenuIcon: true, appMenuIconImage: NSImage(systemSymbolName: "visionpro", accessibilityDescription: nil), appMenuItems: menuItems)
+        let configure : AppUIVisbleConfigure! = AppUIVisbleConfigure(apaName: "", isShowDockIcon: false, appIconImage: nil, isShowMenuIcon: true, appMenuIconImage: NSImage(systemSymbolName: "cursorarrow.click.2", accessibilityDescription: nil), appMenuItems: menuItems)
         
         // AppUIVisbleModule create && show menu
         appUIVisbleModule = AppUIVisbleModule()
@@ -75,7 +77,7 @@ class UIManager : SettingWCDelegate{
         }
     }
     
-    // MARK: - test method -
+    // MARK: - menu icon action method -
     
     @objc func actionShowSettings(){
         if settingWC == nil {
@@ -89,10 +91,12 @@ class UIManager : SettingWCDelegate{
         settingWC?.showWindow(nil)
     }
     
-    @objc func sayBhpark() {
-        let alert = NSAlert()
-        alert.messageText = "bhpark!"
-        alert.runModal()
+    @objc func showAbout() {
+        if aboutWC == nil {
+            aboutWC = AboutWC(windowNibName: "AboutWindow")
+        }
+        aboutWC?.window?.level = .floating
+        aboutWC?.showWindow(nil)
     }
     
     @objc func appTerminate() {
@@ -100,7 +104,7 @@ class UIManager : SettingWCDelegate{
         NSApp.terminate(nil)
     }
     
-    // MARK: - private method -
+    // MARK: - settings ui delegate method -
     func actionSelectRadius(_ raduis: CYCLE_RING_RADIUS) {
         print("[UIManager] actionSelectRadius")
         sharedData.effectRingInfo.ringRadius = raduis

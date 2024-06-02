@@ -24,6 +24,8 @@
 		2524D0B32BFD6683000FD749 /* UIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0B22BFD6683000FD749 /* UIManager.swift */; };
 		2524D0B92BFD6BA5000FD749 /* CustomCursorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524D0B82BFD6BA5000FD749 /* CustomCursorManager.swift */; };
 		25D40B262C096C5900141C6D /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D40B252C096C5900141C6D /* SharedData.swift */; };
+		25D40B282C097FDB00141C6D /* AboutWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D40B272C097FDB00141C6D /* AboutWC.swift */; };
+		25D40B2A2C097FE800141C6D /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25D40B292C097FE800141C6D /* AboutWindow.xib */; };
 		25D8FA592C0451CD0090F1FB /* SettingWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D8FA582C0451CD0090F1FB /* SettingWC.swift */; };
 		25D8FA5B2C0451DD0090F1FB /* SettingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25D8FA5A2C0451DD0090F1FB /* SettingWindow.xib */; };
 /* End PBXBuildFile section */
@@ -67,6 +69,8 @@
 		2524D0B22BFD6683000FD749 /* UIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIManager.swift; sourceTree = "<group>"; };
 		2524D0B82BFD6BA5000FD749 /* CustomCursorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCursorManager.swift; sourceTree = "<group>"; };
 		25D40B252C096C5900141C6D /* SharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
+		25D40B272C097FDB00141C6D /* AboutWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWC.swift; sourceTree = "<group>"; };
+		25D40B292C097FE800141C6D /* AboutWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
 		25D8FA582C0451CD0090F1FB /* SettingWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWC.swift; sourceTree = "<group>"; };
 		25D8FA5A2C0451DD0090F1FB /* SettingWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +117,8 @@
 				25227A442BFF80AD00D6739B /* MouseAnimationWindow.xib */,
 				25D8FA582C0451CD0090F1FB /* SettingWC.swift */,
 				25D8FA5A2C0451DD0090F1FB /* SettingWindow.xib */,
+				25D40B272C097FDB00141C6D /* AboutWC.swift */,
+				25D40B292C097FE800141C6D /* AboutWindow.xib */,
 			);
 			path = window;
 			sourceTree = "<group>";
@@ -295,6 +301,7 @@
 			files = (
 				25D8FA5B2C0451DD0090F1FB /* SettingWindow.xib in Resources */,
 				2524D08C2BFD65D8000FD749 /* Assets.xcassets in Resources */,
+				25D40B2A2C097FE800141C6D /* AboutWindow.xib in Resources */,
 				25227A452BFF80AD00D6739B /* MouseAnimationWindow.xib in Resources */,
 				2524D08F2BFD65D8000FD749 /* Base in Resources */,
 			);
@@ -331,6 +338,7 @@
 				25227A3A2BFF179B00D6739B /* SystemMouseEventListenerModule.swift in Sources */,
 				2524D0B32BFD6683000FD749 /* UIManager.swift in Sources */,
 				25D8FA592C0451CD0090F1FB /* SettingWC.swift in Sources */,
+				25D40B282C097FDB00141C6D /* AboutWC.swift in Sources */,
 				25227A362BFF177000D6739B /* SystemEventManager.swift in Sources */,
 				25227A382BFF178C00D6739B /* AppUIVisbleModule.swift in Sources */,
 			);

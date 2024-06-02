@@ -39,7 +39,9 @@ public class AppUIVisbleModule {
         // apaName
         
         if self.configure?.isShowDockIcon ?? false {
-//            NSApp.setActivationPolicy(.accessory)
+
+        }else {
+            NSApp.setActivationPolicy(.accessory)
         }
         // appIconImage
         
@@ -52,13 +54,14 @@ public class AppUIVisbleModule {
     func showAppMenuIconWithItems(items: [MenuItemConfigure]) {
         print("[AppUIVisbleModule] showAppMenuIconWithItems")
         // 상태 아이템 생성
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         
         if let button = statusItem?.button {
             if self.configure?.appMenuIconImage == nil {
                 button.image = NSImage(systemSymbolName: "highlighter", accessibilityDescription: "Menu Icon")
             }else {
-                button.image = self.configure!.appMenuIconImage
+                let config = NSImage.SymbolConfiguration(scale: .large)
+                button.image = self.configure!.appMenuIconImage?.withSymbolConfiguration(config)
             }
         }
         

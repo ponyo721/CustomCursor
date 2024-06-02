@@ -26,7 +26,7 @@ public class CustomCursorManager : SystemEventManagerDelegate{
         systemEventManager.initalize()
     }
     
-    // SystemEventManager delegate
+    // MARK: - SystemEventManagerDelegate -
     func actionGlobalMouseEvent(event:NSEvent?){
 //        print("[CustomCursorManager] actionGlobalMouseEvent")
       
