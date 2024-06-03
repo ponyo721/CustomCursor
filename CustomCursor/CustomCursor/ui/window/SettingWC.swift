@@ -16,10 +16,7 @@ protocol SettingWCDelegate: AnyObject {
 
 public class SettingWC : NSWindowController, NSWindowDelegate{
     var delegate : SettingWCDelegate?
-    var mouseRingRadius : CYCLE_RING_RADIUS = CYCLE_RING_RADIUS.MIDDLE
-    var mouseRingWidth : CGFloat = DEFAULT_RING_LINE_WIDTH
-    var mouseRingAlpha : CGFloat = DEFAULT_RING_LINE_ALPHA
-    var mouseRingAniMationState : CYCLE_RING_ANIMATION_STATE = .NONE
+    var effectRingInfo : EffectRingInfo! = EffectRingInfo(ringRadius: .MIDDLE, ringLineWidth: DEFAULT_RING_LINE_WIDTH, ringLineAlpha: DEFAULT_RING_LINE_ALPHA, ringAniMationState: .NONE)
     
     @IBOutlet weak var radiusComboBox: NSComboBox!
     @IBOutlet weak var ringWidthSlider: NSSlider!
@@ -48,7 +45,7 @@ public class SettingWC : NSWindowController, NSWindowDelegate{
         radiusComboBox.removeAllItems()
         radiusComboBox.addItems(withObjectValues: ["LARGE","MIDDLE","SMALL"])
         
-        switch mouseRingRadius {
+        switch effectRingInfo.ringRadius {
         case CYCLE_RING_RADIUS.LARGE :
             radiusComboBox.selectItem(at: 0)
             
@@ -61,13 +58,13 @@ public class SettingWC : NSWindowController, NSWindowDelegate{
         
         ringWidthSlider.maxValue = MAX_RING_LINE_WIDTH
         ringWidthSlider.minValue = MIN_RING_LINE_WIDTH
-        ringWidthSlider.floatValue = Float(mouseRingWidth)
+        ringWidthSlider.floatValue = Float(effectRingInfo.ringLineWidth)
         
         ringAlphaSlider.maxValue = MAX_RING_LINE_ALPHA
         ringAlphaSlider.minValue = MIN_RING_LINE_ALPHA
-        ringAlphaSlider.floatValue = Float(mouseRingAlpha)
+        ringAlphaSlider.floatValue = Float(effectRingInfo.ringLineAlpha)
         
-        switch mouseRingAniMationState {
+        switch effectRingInfo.ringAniMationState {
         case CYCLE_RING_ANIMATION_STATE.NONE:
             animationCheckBoxBtn.state = .on
             break
