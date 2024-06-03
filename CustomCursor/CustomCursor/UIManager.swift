@@ -91,14 +91,18 @@ class UIManager : SettingWCDelegate{
             settingWC?.delegate = self
             settingWC?.effectRingInfo = sharedData.effectRingInfo
         }
+        settingWC?.window?.title = "Settings..."
         settingWC?.window?.level = .floating
         settingWC?.showWindow(nil)
+        
+        
     }
     
     @objc func showAbout() {
         if aboutWC == nil {
             aboutWC = AboutWC(windowNibName: "AboutWindow")
         }
+        aboutWC?.window?.title = "About"
         aboutWC?.window?.level = .floating
         aboutWC?.showWindow(nil)
     }
