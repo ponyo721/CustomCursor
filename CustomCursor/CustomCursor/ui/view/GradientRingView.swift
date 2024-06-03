@@ -20,14 +20,17 @@ class GradientRingView: CircleViewCommonInstance {
         guard let layer = self.layer else { return }
         
         // Configure gradient layer
-        gradientLayer.colors = [NSColor.red.cgColor, NSColor.blue.cgColor]
+        gradientLayer.colors = [NSColor.red.withAlphaComponent(effectRingInfo.ringLineAlpha).cgColor, NSColor.blue.withAlphaComponent(effectRingInfo.ringLineAlpha).cgColor]
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
         gradientLayer.frame = bounds
         
         // Configure shape layer for masking
         let center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
-        let radius = min(bounds.width, bounds.height) / 2 - 10
+//        let radius = min(bounds.width, bounds.height) / 2 - 10
+        let radius = min(bounds.width, bounds.height) / effectRingInfo.ringRadius.rawValue - 10
+        print("radius : \(radius)")
+        
         let startAngle: CGFloat = 0
         let endAngle: CGFloat = 2 * .pi
         let path = CGMutablePath()

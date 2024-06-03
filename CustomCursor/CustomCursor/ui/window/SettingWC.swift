@@ -8,6 +8,7 @@
 import Cocoa
 
 protocol SettingWCDelegate: AnyObject {
+    func actionSelectRingType(_ type:CYCLE_RING_TYPE)
     func actionSelectRadius(_ raduis:CYCLE_RING_RADIUS)
     func actionRingWidthSlider(_ value:CGFloat)
     func actionRingAlphaSlider(_ value:CGFloat)
@@ -18,6 +19,8 @@ public class SettingWC : NSWindowController, NSWindowDelegate{
     var delegate : SettingWCDelegate?
     var effectRingInfo : EffectRingInfo! = EffectRingInfo(ringType:.NONE, ringRadius: .MIDDLE, ringLineWidth: DEFAULT_RING_LINE_WIDTH, ringLineAlpha: DEFAULT_RING_LINE_ALPHA, ringAniMationState: .NONE)
     
+    
+    @IBOutlet weak var ringTypeComboBox: NSComboBox!
     @IBOutlet weak var radiusComboBox: NSComboBox!
     @IBOutlet weak var ringWidthSlider: NSSlider!
     @IBOutlet weak var ringAlphaSlider: NSSlider!
@@ -42,6 +45,18 @@ public class SettingWC : NSWindowController, NSWindowDelegate{
     // MARK: - private -
     
     func initalizeUI(){
+        ringTypeComboBox.removeAllItems()
+        ringTypeComboBox.addItems(withObjectValues: ["NORMAL","GRADATION"])
+        
+        switch effectRingInfo.ringType {
+        case .NONE:
+            ringTypeComboBox.selectItem(at: 0)
+        case .NORMAL:
+            ringTypeComboBox.selectItem(at: 0)
+        case .GRADATION:
+            ringTypeComboBox.selectItem(at: 1)
+        }
+        
         radiusComboBox.removeAllItems()
         radiusComboBox.addItems(withObjectValues: ["LARGE","MIDDLE","SMALL"])
         
@@ -78,6 +93,17 @@ public class SettingWC : NSWindowController, NSWindowDelegate{
     }
     
     // MARK: - ui action -
+    @IBAction func actionSelectRingType(_ sender: Any) {
+        print("[SettingWC] actionSelectRingType : \(ringTypeComboBox.indexOfSelectedItem)")
+        switch ringTypeComboBox.indexOfSelectedItem {
+        case 0 :
+            delegate?.actionSelectRingType(CYCLE_RING_TYPE.NORMAL)
+        case 1 :
+            delegate?.actionSelectRingType(CYCLE_RING_TYPE.GRADATION)
+        default:
+            delegate?.actionSelectRadius(CYCLE_RING_RADIUS.MIDDLE)
+        }
+    }
     
     @IBAction func actionSelectRadius(_ sender: Any) {
         print("[SettingWC] actionSelectRadius : \(radiusComboBox.indexOfSelectedItem)")

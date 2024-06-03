@@ -109,6 +109,12 @@ class UIManager : SettingWCDelegate{
     }
     
     // MARK: - settings ui delegate method -
+    func actionSelectRingType(_ type:CYCLE_RING_TYPE){
+        print("[UIManager] actionSelectRingType")
+        sharedData.effectRingInfo.ringType = type
+        self.reloadViewWithInfo(sharedData.effectRingInfo)
+    }
+    
     func actionSelectRadius(_ raduis: CYCLE_RING_RADIUS) {
         print("[UIManager] actionSelectRadius")
         sharedData.effectRingInfo.ringRadius = raduis
