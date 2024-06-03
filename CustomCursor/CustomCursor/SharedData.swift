@@ -11,6 +11,7 @@ struct EffectRingInfo : Encodable, Decodable  {
     var ringRadius : CYCLE_RING_RADIUS
     var ringLineWidth : CGFloat
     var ringLineAlpha : CGFloat
+    var ringAniMationState : CYCLE_RING_ANIMATION_STATE
 }
 
 class SharedData {
@@ -34,7 +35,7 @@ class SharedData {
         }else{
             print("[SharedData] load data init")
             
-            effectRingInfo = EffectRingInfo.init(ringRadius: CYCLE_RING_RADIUS.MIDDLE, ringLineWidth: DEFAULT_RING_LINE_WIDTH, ringLineAlpha: DEFAULT_RING_LINE_ALPHA)
+            effectRingInfo = EffectRingInfo.init(ringRadius: CYCLE_RING_RADIUS.MIDDLE, ringLineWidth: DEFAULT_RING_LINE_WIDTH, ringLineAlpha: DEFAULT_RING_LINE_ALPHA, ringAniMationState: CYCLE_RING_ANIMATION_STATE.NONE)
         }
     }
     

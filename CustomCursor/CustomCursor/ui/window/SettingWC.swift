@@ -11,6 +11,7 @@ protocol SettingWCDelegate: AnyObject {
     func actionSelectRadius(_ raduis:CYCLE_RING_RADIUS)
     func actionRingWidthSlider(_ value:CGFloat)
     func actionRingAlphaSlider(_ value:CGFloat)
+    func actionRingAnimationBtn(_ isOn:Bool)
 }
 
 public class SettingWC : NSWindowController, NSWindowDelegate{
@@ -18,10 +19,12 @@ public class SettingWC : NSWindowController, NSWindowDelegate{
     var mouseRingRadius : CYCLE_RING_RADIUS = CYCLE_RING_RADIUS.MIDDLE
     var mouseRingWidth : CGFloat = DEFAULT_RING_LINE_WIDTH
     var mouseRingAlpha : CGFloat = DEFAULT_RING_LINE_ALPHA
+    var mouseRingAniMationState : CYCLE_RING_ANIMATION_STATE = .NONE
     
     @IBOutlet weak var radiusComboBox: NSComboBox!
     @IBOutlet weak var ringWidthSlider: NSSlider!
     @IBOutlet weak var ringAlphaSlider: NSSlider!
+    @IBOutlet weak var animationCheckBoxBtn: NSButton!
     
     public override var windowNibName: NSNib.Name? {    // load custom xib object
         return NSNib.Name("SettingWindow")
@@ -64,6 +67,17 @@ public class SettingWC : NSWindowController, NSWindowDelegate{
         ringAlphaSlider.minValue = MIN_RING_LINE_ALPHA
         ringAlphaSlider.floatValue = Float(mouseRingAlpha)
         
+        switch mouseRingAniMationState {
+        case CYCLE_RING_ANIMATION_STATE.NONE:
+            animationCheckBoxBtn.state = .on
+            break
+        case CYCLE_RING_ANIMATION_STATE.START:
+            animationCheckBoxBtn.state = .on
+            break
+        case CYCLE_RING_ANIMATION_STATE.STOP:
+            animationCheckBoxBtn.state = .off
+            break
+        }
     }
     
     // MARK: - ui action -
@@ -94,5 +108,13 @@ public class SettingWC : NSWindowController, NSWindowDelegate{
         delegate?.actionRingAlphaSlider(CGFloat(ringAlphaSlider.floatValue))
     }
     
+    @IBAction func actionAnimationCheckBox(_ sender: Any) {
+        
+        if animationCheckBoxBtn.state == .on {
+            delegate?.actionRingAnimationBtn(true)
+        }else{
+            delegate?.actionRingAnimationBtn(false)
+        }
+    }
     
 }

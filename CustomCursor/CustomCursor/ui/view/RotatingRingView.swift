@@ -16,7 +16,8 @@ class RotatingRingView: NSView {
         self.wantsLayer = true
         let ringLayer = createRingLayer()
         self.layer?.addSublayer(ringLayer)
-        addRotationAnimation(to: ringLayer)
+        
+//        addRotationAnimation(to: ringLayer)
     }
     
     // MARK: - private method -
@@ -52,7 +53,7 @@ class RotatingRingView: NSView {
         return ringLayer
     }
     
-    private func addRotationAnimation(to layer: CALayer) {
+    public func addRotationAnimation(to layer: CALayer) {
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotationAnimation.fromValue = 0
         rotationAnimation.toValue = 2 * Double.pi

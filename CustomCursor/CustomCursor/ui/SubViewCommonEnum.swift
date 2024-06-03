@@ -20,3 +20,9 @@ enum CYCLE_RING_RADIUS : CGFloat, Codable {
     case MIDDLE = 3
     case SMALL = 4
 }
+
+enum CYCLE_RING_ANIMATION_STATE : Codable {
+    case NONE
+    case START
+    case STOP
+}
