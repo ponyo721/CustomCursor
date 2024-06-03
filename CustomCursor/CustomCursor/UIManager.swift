@@ -35,10 +35,17 @@ class UIManager : SettingWCDelegate{
         mouseTrackingWindow.window?.backgroundColor = .clear
         mouseTrackingWindow.window?.ignoresMouseEvents = true // 마우스 이벤트 무시
         
-//        mouseTrackingWindow.window?.makeKeyAndOrderFront(nil)
+        //        mouseTrackingWindow.window?.makeKeyAndOrderFront(nil)
         mouseTrackingWindow.showWindow(nil)
         self.setWindowPositionOnMouse()
         
+#if DEBUG
+        // mouse tracking window sub view
+        let testView : GradientRingView? = GradientRingView(frame: mouseTrackingWindow.window!.contentView!.bounds)
+        
+        mouseTrackingWindow.window?.contentView?.addSubview(testView!)
+#else
+        print("#else add view")
         // mouse tracking window sub view
         let rotatingRingView : RotatingRingView? = RotatingRingView(frame: mouseTrackingWindow.window!.contentView!.bounds)
         rotatingRingView?.ringRadius = sharedData.effectRingInfo.ringRadius
@@ -58,13 +65,14 @@ class UIManager : SettingWCDelegate{
         }
         
         mouseTrackingWindow.window?.contentView?.addSubview(rotatingRingView!)
+#endif
         
     }
     
     // MARK: - private method -
     
     func setWindowPositionOnMouse(){
-//        print("[UIManager] setWindowPositionOnMouse")
+        //        print("[UIManager] setWindowPositionOnMouse")
         
         DispatchQueue.main.async {
             let positionX : CGFloat = NSEvent.mouseLocation.x - ((self.mouseTrackingWindow.window?.frame.size.width ?? 1)/2)
@@ -74,7 +82,11 @@ class UIManager : SettingWCDelegate{
         }
     }
     
+
     func reloadViewWithInfo(_ info:EffectRingInfo){
+#if DEBUG
+#else
+        print("#else reloadViewWithInfo")
         DispatchQueue.main.async {
             self.mouseTrackingWindow.window?.contentView?.subviews.removeAll()
             
@@ -97,7 +109,9 @@ class UIManager : SettingWCDelegate{
             
             self.mouseTrackingWindow.window?.contentView?.addSubview(rotatingRingView!)
         }
+#endif
     }
+
     
     // MARK: - menu icon action method -
     
@@ -128,19 +142,28 @@ class UIManager : SettingWCDelegate{
     func actionSelectRadius(_ raduis: CYCLE_RING_RADIUS) {
         print("[UIManager] actionSelectRadius")
         sharedData.effectRingInfo.ringRadius = raduis
+#if DEBUG
+#else
         self.reloadViewWithInfo(sharedData.effectRingInfo)
+#endif
     }
     
     func actionRingWidthSlider(_ value: CGFloat) {
         print("[UIManager] actionRingWidthSlider")
         sharedData.effectRingInfo.ringLineWidth = value
+#if DEBUG
+#else
         self.reloadViewWithInfo(sharedData.effectRingInfo)
+#endif
     }
     
     func actionRingAlphaSlider(_ value: CGFloat) {
         print("[UIManager] actionRingAlphaSlider")
         sharedData.effectRingInfo.ringLineAlpha = value
+#if DEBUG
+#else
         self.reloadViewWithInfo(sharedData.effectRingInfo)
+#endif
     }
     
     func actionRingAnimationBtn(_ isOn:Bool) {
@@ -149,7 +172,9 @@ class UIManager : SettingWCDelegate{
         }else {
             sharedData.effectRingInfo.ringAniMationState = CYCLE_RING_ANIMATION_STATE.STOP
         }
-        
+#if DEBUG
+#else
         self.reloadViewWithInfo(sharedData.effectRingInfo)
+#endif
     }
 }
