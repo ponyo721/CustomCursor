@@ -27,6 +27,7 @@
 		25D40B282C097FDB00141C6D /* AboutWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D40B272C097FDB00141C6D /* AboutWC.swift */; };
 		25D40B2A2C097FE800141C6D /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25D40B292C097FE800141C6D /* AboutWindow.xib */; };
 		25D40B2C2C0D54EF00141C6D /* GradientRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D40B2B2C0D54EF00141C6D /* GradientRingView.swift */; };
+		25D40B302C0D759600141C6D /* CircleViewCommonInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D40B2F2C0D759600141C6D /* CircleViewCommonInstance.swift */; };
 		25D8FA592C0451CD0090F1FB /* SettingWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D8FA582C0451CD0090F1FB /* SettingWC.swift */; };
 		25D8FA5B2C0451DD0090F1FB /* SettingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25D8FA5A2C0451DD0090F1FB /* SettingWindow.xib */; };
 /* End PBXBuildFile section */
@@ -73,6 +74,7 @@
 		25D40B272C097FDB00141C6D /* AboutWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWC.swift; sourceTree = "<group>"; };
 		25D40B292C097FE800141C6D /* AboutWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
 		25D40B2B2C0D54EF00141C6D /* GradientRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientRingView.swift; sourceTree = "<group>"; };
+		25D40B2F2C0D759600141C6D /* CircleViewCommonInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewCommonInstance.swift; sourceTree = "<group>"; };
 		25D8FA582C0451CD0090F1FB /* SettingWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWC.swift; sourceTree = "<group>"; };
 		25D8FA5A2C0451DD0090F1FB /* SettingWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				25227A4A2C002DEC00D6739B /* CircleView.swift */,
+				25D40B2F2C0D759600141C6D /* CircleViewCommonInstance.swift */,
 				25227A4C2C00324C00D6739B /* RotatingRingView.swift */,
 				25D40B2B2C0D54EF00141C6D /* GradientRingView.swift */,
 			);
@@ -331,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25D40B302C0D759600141C6D /* CircleViewCommonInstance.swift in Sources */,
 				25D40B262C096C5900141C6D /* SharedData.swift in Sources */,
 				25227A4B2C002DEC00D6739B /* CircleView.swift in Sources */,
 				25227A4F2C00C3BA00D6739B /* SubViewCommonEnum.swift in Sources */,

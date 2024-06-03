@@ -39,33 +39,8 @@ class UIManager : SettingWCDelegate{
         mouseTrackingWindow.showWindow(nil)
         self.setWindowPositionOnMouse()
         
-#if DEBUG
         // mouse tracking window sub view
-        let testView : GradientRingView? = GradientRingView(frame: mouseTrackingWindow.window!.contentView!.bounds)
-        
-        mouseTrackingWindow.window?.contentView?.addSubview(testView!)
-#else
-        print("#else add view")
-        // mouse tracking window sub view
-        let rotatingRingView : RotatingRingView? = RotatingRingView(frame: mouseTrackingWindow.window!.contentView!.bounds)
-        rotatingRingView?.ringRadius = sharedData.effectRingInfo.ringRadius
-        rotatingRingView?.ringLineWidth = sharedData.effectRingInfo.ringLineWidth
-        rotatingRingView?.ringLineAlpha = sharedData.effectRingInfo.ringLineAlpha
-        rotatingRingView?.setupLayer()
-        
-        switch sharedData.effectRingInfo.ringAniMationState {
-        case CYCLE_RING_ANIMATION_STATE.NONE:
-            rotatingRingView?.addRotationAnimation(to: (rotatingRingView?.layer?.sublayers?.first)!)
-            break
-        case CYCLE_RING_ANIMATION_STATE.START:
-            rotatingRingView?.addRotationAnimation(to: (rotatingRingView?.layer?.sublayers?.first)!)
-            break
-        case CYCLE_RING_ANIMATION_STATE.STOP:
-            break
-        }
-        
-        mouseTrackingWindow.window?.contentView?.addSubview(rotatingRingView!)
-#endif
+        reloadViewWithInfo(sharedData.effectRingInfo)
         
     }
     
@@ -84,32 +59,27 @@ class UIManager : SettingWCDelegate{
     
 
     func reloadViewWithInfo(_ info:EffectRingInfo){
-#if DEBUG
-#else
         print("#else reloadViewWithInfo")
         DispatchQueue.main.async {
             self.mouseTrackingWindow.window?.contentView?.subviews.removeAll()
             
-            let rotatingRingView : RotatingRingView? = RotatingRingView(frame: self.mouseTrackingWindow.window!.contentView!.bounds)
-            rotatingRingView?.ringRadius = info.ringRadius
-            rotatingRingView?.ringLineWidth = info.ringLineWidth
-            rotatingRingView?.ringLineAlpha = info.ringLineAlpha
-            rotatingRingView?.setupLayer()
+            var subView : CircleViewCommonInstance? = nil
             
-            switch info.ringAniMationState {
-            case CYCLE_RING_ANIMATION_STATE.NONE:
-                rotatingRingView?.addRotationAnimation(to: (rotatingRingView?.layer?.sublayers?.first)!)
+            switch self.sharedData.effectRingInfo.ringType {
+            case CYCLE_RING_TYPE.NONE:
+                subView = GradientRingView(frame: self.mouseTrackingWindow.window!.contentView!.bounds)
                 break
-            case CYCLE_RING_ANIMATION_STATE.START:
-                rotatingRingView?.addRotationAnimation(to: (rotatingRingView?.layer?.sublayers?.first)!)
+            case CYCLE_RING_TYPE.NORMAL:
+                subView = RotatingRingView(frame: self.mouseTrackingWindow.window!.contentView!.bounds)
                 break
-            case CYCLE_RING_ANIMATION_STATE.STOP:
+            case CYCLE_RING_TYPE.GRADATION:
+                subView = GradientRingView(frame: self.mouseTrackingWindow.window!.contentView!.bounds)
                 break
             }
-            
-            self.mouseTrackingWindow.window?.contentView?.addSubview(rotatingRingView!)
+            subView?.effectRingInfo = self.sharedData.effectRingInfo
+            subView?.setupLayer()
+            self.mouseTrackingWindow.window?.contentView?.addSubview(subView!)
         }
-#endif
     }
 
     
@@ -142,28 +112,19 @@ class UIManager : SettingWCDelegate{
     func actionSelectRadius(_ raduis: CYCLE_RING_RADIUS) {
         print("[UIManager] actionSelectRadius")
         sharedData.effectRingInfo.ringRadius = raduis
-#if DEBUG
-#else
         self.reloadViewWithInfo(sharedData.effectRingInfo)
-#endif
     }
     
     func actionRingWidthSlider(_ value: CGFloat) {
         print("[UIManager] actionRingWidthSlider")
         sharedData.effectRingInfo.ringLineWidth = value
-#if DEBUG
-#else
         self.reloadViewWithInfo(sharedData.effectRingInfo)
-#endif
     }
     
     func actionRingAlphaSlider(_ value: CGFloat) {
         print("[UIManager] actionRingAlphaSlider")
         sharedData.effectRingInfo.ringLineAlpha = value
-#if DEBUG
-#else
         self.reloadViewWithInfo(sharedData.effectRingInfo)
-#endif
     }
     
     func actionRingAnimationBtn(_ isOn:Bool) {
@@ -172,9 +133,6 @@ class UIManager : SettingWCDelegate{
         }else {
             sharedData.effectRingInfo.ringAniMationState = CYCLE_RING_ANIMATION_STATE.STOP
         }
-#if DEBUG
-#else
         self.reloadViewWithInfo(sharedData.effectRingInfo)
-#endif
     }
 }

@@ -7,22 +7,15 @@
 import Cocoa
 import QuartzCore
 
-class GradientRingView: NSView {
+class GradientRingView: CircleViewCommonInstance {
     
     private let gradientLayer = CAGradientLayer()
     private let shapeLayer = CAShapeLayer()
     
-    override init(frame frameRect: NSRect) {
-        super.init(frame: frameRect)
-        setupLayers()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupLayers()
-    }
-    
-    private func setupLayers() {
+    override public func setupLayer() {
+        super.setupLayer()
+        self.layer?.sublayers?.removeAll()
+        
         wantsLayer = true
         guard let layer = self.layer else { return }
         
@@ -41,7 +34,7 @@ class GradientRingView: NSView {
         path.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
         
         shapeLayer.path = path
-        shapeLayer.lineWidth = 20.0
+        shapeLayer.lineWidth = effectRingInfo.ringLineWidth
         shapeLayer.fillColor = NSColor.clear.cgColor
         shapeLayer.strokeColor = NSColor.black.cgColor
         
@@ -52,10 +45,19 @@ class GradientRingView: NSView {
         layer.addSublayer(gradientLayer)
         
         // Add rotation animation
-        addRotationAnimation()
+        switch effectRingInfo.ringAniMationState {
+        case CYCLE_RING_ANIMATION_STATE.NONE:
+            addRotationAnimation()
+            break
+        case CYCLE_RING_ANIMATION_STATE.START:
+            addRotationAnimation()
+            break
+        case CYCLE_RING_ANIMATION_STATE.STOP:
+            break
+        }
     }
     
-    private func addRotationAnimation() {
+    func addRotationAnimation() {
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotationAnimation.fromValue = 0
         rotationAnimation.toValue = 2 * 3.14

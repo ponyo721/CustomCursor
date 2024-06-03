@@ -7,24 +7,33 @@
 
 import Cocoa
 
-class RotatingRingView: NSView {
-    public var ringRadius : CYCLE_RING_RADIUS = CYCLE_RING_RADIUS.MIDDLE
-    public var ringLineWidth : CGFloat = DEFAULT_RING_LINE_WIDTH
-    public var ringLineAlpha : CGFloat = DEFAULT_RING_LINE_ALPHA    // 0.1 ~ 1
+class RotatingRingView: CircleViewCommonInstance {
     
-    public func setupLayer() {
+    override func setupLayer() {
+        super.setupLayer()
+        
         self.wantsLayer = true
         let ringLayer = createRingLayer()
         self.layer?.addSublayer(ringLayer)
         
-//        addRotationAnimation(to: ringLayer)
+        switch effectRingInfo.ringAniMationState {
+        case CYCLE_RING_ANIMATION_STATE.NONE:
+            addRotationAnimation(to: ringLayer)
+            break
+        case CYCLE_RING_ANIMATION_STATE.START:
+            addRotationAnimation(to: ringLayer)
+            break
+        case CYCLE_RING_ANIMATION_STATE.STOP:
+            break
+        }
+        
     }
     
     // MARK: - private method -
     
     private func createRingLayer() -> CALayer {
-        let lineWidth: CGFloat = ringLineWidth
-        let radius = min(bounds.width, bounds.height) / ringRadius.rawValue - lineWidth / 2
+        let lineWidth: CGFloat = effectRingInfo.ringLineWidth
+        let radius = min(bounds.width, bounds.height) / effectRingInfo.ringRadius.rawValue - lineWidth / 2
         let center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
         
         let ringLayer = CALayer()
@@ -35,7 +44,7 @@ class RotatingRingView: NSView {
         let leftRingPath = NSBezierPath()
         leftRingPath.appendArc(withCenter: center, radius: radius, startAngle: 90, endAngle: 270, clockwise: false)
         leftRingLayer.path = leftRingPath.cgPath
-        leftRingLayer.strokeColor = NSColor.systemYellow.withAlphaComponent(ringLineAlpha).cgColor
+        leftRingLayer.strokeColor = NSColor.systemYellow.withAlphaComponent(effectRingInfo.ringLineAlpha).cgColor
         leftRingLayer.fillColor = NSColor.clear.cgColor
         leftRingLayer.lineWidth = lineWidth
         ringLayer.addSublayer(leftRingLayer)
@@ -45,7 +54,7 @@ class RotatingRingView: NSView {
         let rightRingPath = NSBezierPath()
         rightRingPath.appendArc(withCenter: center, radius: radius, startAngle: 270, endAngle: 90, clockwise: false)
         rightRingLayer.path = rightRingPath.cgPath
-        rightRingLayer.strokeColor = NSColor.systemBlue.withAlphaComponent(ringLineAlpha).cgColor
+        rightRingLayer.strokeColor = NSColor.systemBlue.withAlphaComponent(effectRingInfo.ringLineAlpha).cgColor
         rightRingLayer.fillColor = NSColor.clear.cgColor
         rightRingLayer.lineWidth = lineWidth
         ringLayer.addSublayer(rightRingLayer)

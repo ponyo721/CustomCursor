@@ -16,7 +16,7 @@ protocol SettingWCDelegate: AnyObject {
 
 public class SettingWC : NSWindowController, NSWindowDelegate{
     var delegate : SettingWCDelegate?
-    var effectRingInfo : EffectRingInfo! = EffectRingInfo(ringRadius: .MIDDLE, ringLineWidth: DEFAULT_RING_LINE_WIDTH, ringLineAlpha: DEFAULT_RING_LINE_ALPHA, ringAniMationState: .NONE)
+    var effectRingInfo : EffectRingInfo! = EffectRingInfo(ringType:.NONE, ringRadius: .MIDDLE, ringLineWidth: DEFAULT_RING_LINE_WIDTH, ringLineAlpha: DEFAULT_RING_LINE_ALPHA, ringAniMationState: .NONE)
     
     @IBOutlet weak var radiusComboBox: NSComboBox!
     @IBOutlet weak var ringWidthSlider: NSSlider!

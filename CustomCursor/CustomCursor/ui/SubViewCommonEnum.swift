@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum CYCLE_RING_TYPE : Codable {
+    case NONE
+    case NORMAL
+    case GRADATION
+}
+
 let DEFAULT_RING_LINE_WIDTH : CGFloat = 7
 let MAX_RING_LINE_WIDTH : CGFloat = 10
 let MIN_RING_LINE_WIDTH : CGFloat = 1
