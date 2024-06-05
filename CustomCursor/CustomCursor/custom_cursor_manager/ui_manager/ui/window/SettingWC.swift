@@ -15,16 +15,24 @@ protocol SettingWCDelegate: AnyObject {
     func actionRingAnimationBtn(_ isOn:Bool)
 }
 
-public class SettingWC : NSWindowController, NSWindowDelegate{
+public class SettingWC : NSWindowController, NSWindowDelegate, ColorSetVCDelegate{
+    var colorSetCount : Int = 5
     var delegate : SettingWCDelegate?
-    var effectRingInfo : EffectRingInfo! = EffectRingInfo(ringType:.NONE, ringRadius: .MIDDLE, ringLineWidth: DEFAULT_RING_LINE_WIDTH, ringLineAlpha: DEFAULT_RING_LINE_ALPHA, ringAniMationState: .NONE)
+    var effectRingInfo : EffectRingInfo! = EffectRingInfo(ringType:.NONE, ringRadius: .MIDDLE, ringLineWidth: DEFAULT_RING_LINE_WIDTH, ringLineAlpha: DEFAULT_RING_LINE_ALPHA, ringAniMationState: .NONE, ringColorList: nil)
     
+    private let colorSetPadding : CGFloat = 10
+    private var colorSetVCList : [ColorSetVC] = []
     
+    // ring shape
     @IBOutlet weak var ringTypeComboBox: NSComboBox!
     @IBOutlet weak var radiusComboBox: NSComboBox!
     @IBOutlet weak var ringWidthSlider: NSSlider!
     @IBOutlet weak var ringAlphaSlider: NSSlider!
     @IBOutlet weak var animationCheckBoxBtn: NSButton!
+    
+    // ring color
+    @IBOutlet var colorSetViewArea: NSView!
+    
     
     public override var windowNibName: NSNib.Name? {    // load custom xib object
         return NSNib.Name("SettingWindow")
@@ -90,6 +98,17 @@ public class SettingWC : NSWindowController, NSWindowDelegate{
             animationCheckBoxBtn.state = .off
             break
         }
+        
+        for idx in 0..<colorSetCount {
+            let colorSetVC = ColorSetVC(nibName: ColorSetVC.className(), bundle: nil)
+            colorSetVC.view.frame.origin = CGPointMake(0, (colorSetVC.view.frame.size.height + colorSetPadding) * CGFloat((idx+1)))
+            colorSetVC.viewIdx = idx
+            colorSetVC.delegate = self
+            
+            colorSetViewArea.addSubview(colorSetVC.view)
+            colorSetVCList.append(colorSetVC)
+        }
+        
     }
     
     // MARK: - ui action -
@@ -138,6 +157,12 @@ public class SettingWC : NSWindowController, NSWindowDelegate{
         }else{
             delegate?.actionRingAnimationBtn(false)
         }
+    }
+    
+    // MARK: - ColorSetVCDelegate -
+    func actionColorSetCheckBoxWithIdx(idx: Int, isOn: Bool) {
+        print("[SettingWC] actionColorSetCheckBoxWithIdx : \(idx), isOn : \(isOn)")
+        
     }
     
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 struct EffectRingInfo : Encodable, Decodable  {
     var ringType : CYCLE_RING_TYPE
@@ -13,6 +14,7 @@ struct EffectRingInfo : Encodable, Decodable  {
     var ringLineWidth : CGFloat
     var ringLineAlpha : CGFloat
     var ringAniMationState : CYCLE_RING_ANIMATION_STATE
+    var ringColorList : [Data]? = []
 }
 
 class SharedData {
@@ -36,7 +38,7 @@ class SharedData {
         }else{
             print("[SharedData] load data init")
             
-            effectRingInfo = EffectRingInfo.init(ringType:CYCLE_RING_TYPE.NONE ,ringRadius: CYCLE_RING_RADIUS.MIDDLE, ringLineWidth: DEFAULT_RING_LINE_WIDTH, ringLineAlpha: DEFAULT_RING_LINE_ALPHA, ringAniMationState: CYCLE_RING_ANIMATION_STATE.NONE)
+            effectRingInfo = EffectRingInfo.init(ringType:CYCLE_RING_TYPE.NONE ,ringRadius: CYCLE_RING_RADIUS.MIDDLE, ringLineWidth: DEFAULT_RING_LINE_WIDTH, ringLineAlpha: DEFAULT_RING_LINE_ALPHA, ringAniMationState: CYCLE_RING_ANIMATION_STATE.NONE, ringColorList: nil)
         }
     }
     

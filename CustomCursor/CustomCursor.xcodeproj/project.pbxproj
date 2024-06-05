@@ -28,6 +28,8 @@
 		25D40B2A2C097FE800141C6D /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25D40B292C097FE800141C6D /* AboutWindow.xib */; };
 		25D40B2C2C0D54EF00141C6D /* GradientRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D40B2B2C0D54EF00141C6D /* GradientRingView.swift */; };
 		25D40B302C0D759600141C6D /* CircleViewCommonInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D40B2F2C0D759600141C6D /* CircleViewCommonInstance.swift */; };
+		25D40B722C0FF04B00141C6D /* ColorSetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D40B712C0FF04B00141C6D /* ColorSetVC.swift */; };
+		25D40B742C0FF05600141C6D /* ColorSetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25D40B732C0FF05600141C6D /* ColorSetView.xib */; };
 		25D8FA592C0451CD0090F1FB /* SettingWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D8FA582C0451CD0090F1FB /* SettingWC.swift */; };
 		25D8FA5B2C0451DD0090F1FB /* SettingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25D8FA5A2C0451DD0090F1FB /* SettingWindow.xib */; };
 /* End PBXBuildFile section */
@@ -75,6 +77,8 @@
 		25D40B292C097FE800141C6D /* AboutWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
 		25D40B2B2C0D54EF00141C6D /* GradientRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientRingView.swift; sourceTree = "<group>"; };
 		25D40B2F2C0D759600141C6D /* CircleViewCommonInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewCommonInstance.swift; sourceTree = "<group>"; };
+		25D40B712C0FF04B00141C6D /* ColorSetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetVC.swift; sourceTree = "<group>"; };
+		25D40B732C0FF05600141C6D /* ColorSetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorSetView.xib; sourceTree = "<group>"; };
 		25D8FA582C0451CD0090F1FB /* SettingWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWC.swift; sourceTree = "<group>"; };
 		25D8FA5A2C0451DD0090F1FB /* SettingWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,10 +134,9 @@
 		25227A472C002C3D00D6739B /* view */ = {
 			isa = PBXGroup;
 			children = (
-				25227A4A2C002DEC00D6739B /* CircleView.swift */,
-				25D40B2F2C0D759600141C6D /* CircleViewCommonInstance.swift */,
-				25227A4C2C00324C00D6739B /* RotatingRingView.swift */,
-				25D40B2B2C0D54EF00141C6D /* GradientRingView.swift */,
+				25D40B702C0FF02300141C6D /* circle_view */,
+				25D40B712C0FF04B00141C6D /* ColorSetVC.swift */,
+				25D40B732C0FF05600141C6D /* ColorSetView.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -161,13 +164,8 @@
 		2524D0882BFD65D7000FD749 /* CustomCursor */ = {
 			isa = PBXGroup;
 			children = (
-				25227A3B2BFF79C000D6739B /* ui */,
-				2524D0B52BFD66AD000FD749 /* utility  */,
+				25D40B6C2C0EFCF500141C6D /* custom_cursor_manager */,
 				2524D0892BFD65D7000FD749 /* AppDelegate.swift */,
-				2524D0B82BFD6BA5000FD749 /* CustomCursorManager.swift */,
-				25227A352BFF177000D6739B /* SystemEventManager.swift */,
-				2524D0B22BFD6683000FD749 /* UIManager.swift */,
-				25D40B252C096C5900141C6D /* SharedData.swift */,
 				2524D08B2BFD65D8000FD749 /* Assets.xcassets */,
 				2524D08D2BFD65D8000FD749 /* MainMenu.xib */,
 				2524D0902BFD65D8000FD749 /* CustomCursor.entitlements */,
@@ -199,6 +197,54 @@
 				25227A392BFF179B00D6739B /* SystemMouseEventListenerModule.swift */,
 			);
 			path = "utility ";
+			sourceTree = "<group>";
+		};
+		25D40B6C2C0EFCF500141C6D /* custom_cursor_manager */ = {
+			isa = PBXGroup;
+			children = (
+				25D40B6F2C0EFD3100141C6D /* library */,
+				25D40B6E2C0EFD2500141C6D /* system_event_manager */,
+				25D40B6D2C0EFD0C00141C6D /* ui_manager */,
+				2524D0B82BFD6BA5000FD749 /* CustomCursorManager.swift */,
+				25D40B252C096C5900141C6D /* SharedData.swift */,
+			);
+			path = custom_cursor_manager;
+			sourceTree = "<group>";
+		};
+		25D40B6D2C0EFD0C00141C6D /* ui_manager */ = {
+			isa = PBXGroup;
+			children = (
+				25227A3B2BFF79C000D6739B /* ui */,
+				2524D0B22BFD6683000FD749 /* UIManager.swift */,
+			);
+			path = ui_manager;
+			sourceTree = "<group>";
+		};
+		25D40B6E2C0EFD2500141C6D /* system_event_manager */ = {
+			isa = PBXGroup;
+			children = (
+				25227A352BFF177000D6739B /* SystemEventManager.swift */,
+			);
+			path = system_event_manager;
+			sourceTree = "<group>";
+		};
+		25D40B6F2C0EFD3100141C6D /* library */ = {
+			isa = PBXGroup;
+			children = (
+				2524D0B52BFD66AD000FD749 /* utility  */,
+			);
+			path = library;
+			sourceTree = "<group>";
+		};
+		25D40B702C0FF02300141C6D /* circle_view */ = {
+			isa = PBXGroup;
+			children = (
+				25227A4A2C002DEC00D6739B /* CircleView.swift */,
+				25D40B2F2C0D759600141C6D /* CircleViewCommonInstance.swift */,
+				25227A4C2C00324C00D6739B /* RotatingRingView.swift */,
+				25D40B2B2C0D54EF00141C6D /* GradientRingView.swift */,
+			);
+			path = circle_view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25D8FA5B2C0451DD0090F1FB /* SettingWindow.xib in Resources */,
+				25D40B742C0FF05600141C6D /* ColorSetView.xib in Resources */,
 				2524D08C2BFD65D8000FD749 /* Assets.xcassets in Resources */,
 				25D40B2A2C097FE800141C6D /* AboutWindow.xib in Resources */,
 				25227A452BFF80AD00D6739B /* MouseAnimationWindow.xib in Resources */,
@@ -349,6 +396,7 @@
 				25D40B282C097FDB00141C6D /* AboutWC.swift in Sources */,
 				25227A362BFF177000D6739B /* SystemEventManager.swift in Sources */,
 				25227A382BFF178C00D6739B /* AppUIVisbleModule.swift in Sources */,
+				25D40B722C0FF04B00141C6D /* ColorSetVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="SettingWC" customModule="CustomCursor" customModuleProvider="target">
             <connections>
                 <outlet property="animationCheckBoxBtn" destination="6xu-qG-XQC" id="0uO-6B-O1f"/>
+                <outlet property="colorSetViewArea" destination="dWN-x7-dhb" id="mja-XU-Qch"/>
                 <outlet property="radiusComboBox" destination="8aA-lw-aBy" id="c0b-3L-sVu"/>
                 <outlet property="ringAlphaSlider" destination="Jg4-Fy-sE2" id="OH8-g1-YCo"/>
                 <outlet property="ringTypeComboBox" destination="NPJ-D5-oUR" id="mzG-fG-zJz"/>
@@ -20,10 +21,10 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-            <rect key="contentRect" x="196" y="240" width="480" height="223"/>
+            <rect key="contentRect" x="196" y="240" width="515" height="223"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1728" height="1079"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="223"/>
+                <rect key="frame" x="0.0" y="0.0" width="515" height="223"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8aA-lw-aBy">
@@ -99,6 +100,17 @@
                             <action selector="actionRingAlphaSlider:" target="-2" id="c9S-lI-T9a"/>
                         </connections>
                     </slider>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6xu-qG-XQC">
+                        <rect key="frame" x="171" y="34" width="54" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="isOn" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="7Mz-ED-QUb">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="actionAnimationCheckBox:" target="-2" id="7wX-my-v1j"/>
+                        </connections>
+                    </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M2E-DZ-Nd7">
                         <rect key="frame" x="73" y="187" width="72" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -125,20 +137,13 @@
                             <action selector="actionSelectRingType:" target="-2" id="Jlu-PE-qAv"/>
                         </connections>
                     </comboBox>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6xu-qG-XQC">
-                        <rect key="frame" x="171" y="34" width="54" height="18"/>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWN-x7-dhb">
+                        <rect key="frame" x="317" y="11" width="198" height="192"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="isOn" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="7Mz-ED-QUb">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="actionAnimationCheckBox:" target="-2" id="7wX-my-v1j"/>
-                        </connections>
-                    </button>
+                    </customView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="150" y="178.5"/>
+            <point key="canvasLocation" x="167.5" y="178.5"/>
         </window>
     </objects>
 </document>
