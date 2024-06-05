@@ -19,8 +19,13 @@ class GradientRingView: CircleViewCommonInstance {
         wantsLayer = true
         guard let layer = self.layer else { return }
         
+        var colorList : [CGColor] = []
+        for idx in 0..<effectRingInfo.ringColorList!.count {
+            colorList.append(effectRingInfo.ringColorList![idx].color.withAlphaComponent(effectRingInfo.ringLineAlpha).cgColor)
+        }
+        
         // Configure gradient layer
-        gradientLayer.colors = [NSColor.red.withAlphaComponent(effectRingInfo.ringLineAlpha).cgColor, NSColor.blue.withAlphaComponent(effectRingInfo.ringLineAlpha).cgColor]
+        gradientLayer.colors = colorList
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
         gradientLayer.frame = bounds

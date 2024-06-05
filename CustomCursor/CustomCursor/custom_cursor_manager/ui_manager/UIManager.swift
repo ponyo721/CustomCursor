@@ -59,7 +59,7 @@ class UIManager : SettingWCDelegate{
     
 
     func reloadViewWithInfo(_ info:EffectRingInfo){
-        print("#else reloadViewWithInfo")
+        print("reloadViewWithInfo")
         DispatchQueue.main.async {
             self.mouseTrackingWindow.window?.contentView?.subviews.removeAll()
             
@@ -143,6 +143,11 @@ class UIManager : SettingWCDelegate{
         }else {
             sharedData.effectRingInfo.ringAniMationState = CYCLE_RING_ANIMATION_STATE.STOP
         }
+        self.reloadViewWithInfo(sharedData.effectRingInfo)
+    }
+    
+    func setNewColorSet(colorList:[Color]) {
+        sharedData.effectRingInfo.ringColorList = colorList
         self.reloadViewWithInfo(sharedData.effectRingInfo)
     }
 }

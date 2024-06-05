@@ -10,18 +10,45 @@ import AppKit
 
 protocol ColorSetVCDelegate: AnyObject {
     func actionColorSetCheckBoxWithIdx(idx:Int, isOn:Bool)
-//    func actionColorSetWell(_ raduis:CYCLE_RING_RADIUS)
+    func actionColorSetWellWithIdx(idx:Int, color:NSColor)
 }
 
 public class ColorSetVC : NSViewController{
     var delegate : ColorSetVCDelegate?
     var viewIdx : Int = 0
+    var colorSetTitle : String = ""
+    var colorSetColor : NSColor = NSColor.red
+    var isHasColor : Bool = false
     
     @IBOutlet weak var colorSetCheckBox: NSButton!
     @IBOutlet weak var colorSetWell: NSColorWell!
     
     public override var nibName: NSNib.Name? {
         return NSNib.Name("ColorSetView")
+    }
+    
+    public override func viewDidLoad() {
+        print("[ColorSetVC] viewDidLoad")
+        
+        colorSetCheckBox.title = colorSetTitle
+        colorSetWell.color = colorSetColor
+        
+        if isHasColor {
+            colorSetCheckBox.state = .on
+            colorSetWell.isEnabled = true
+        }else {
+            colorSetCheckBox.state = .off
+            colorSetWell.isEnabled = false
+        }
+    }
+    
+    func setColorSetWellState(_ isEnabled:Bool) {
+        if !isEnabled {
+            colorSetWell.color = .black
+        }else {
+            colorSetWell.color = colorSetColor
+        }
+        colorSetWell.isEnabled = isEnabled
     }
     
     @IBAction func actionColorSetCheckBox(_ sender: Any) {
@@ -35,8 +62,8 @@ public class ColorSetVC : NSViewController{
     }
     
     @IBAction func actionColorSetWell(_ sender: NSColorWell) {
+        print("[ColorSetVC] actionColorSetWell")
         let color = sender.color
-        dump("[ColorSetVC] actionColorSetWell \(color)")
-        
+        self.delegate?.actionColorSetWellWithIdx(idx: viewIdx, color: color)
     }
 }

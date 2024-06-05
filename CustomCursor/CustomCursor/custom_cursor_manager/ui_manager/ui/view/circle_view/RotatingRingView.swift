@@ -39,25 +39,46 @@ class RotatingRingView: CircleViewCommonInstance {
         let ringLayer = CALayer()
         ringLayer.frame = self.bounds
         
-        // 왼쪽 반쪽 (금색)
-        let leftRingLayer = CAShapeLayer()
-        let leftRingPath = NSBezierPath()
-        leftRingPath.appendArc(withCenter: center, radius: radius, startAngle: 90, endAngle: 270, clockwise: false)
-        leftRingLayer.path = leftRingPath.cgPath
-        leftRingLayer.strokeColor = NSColor.systemYellow.withAlphaComponent(effectRingInfo.ringLineAlpha).cgColor
-        leftRingLayer.fillColor = NSColor.clear.cgColor
-        leftRingLayer.lineWidth = lineWidth
-        ringLayer.addSublayer(leftRingLayer)
+        var startAngle : CGFloat = 0
+        let interval : CGFloat = CGFloat(360 / effectRingInfo.ringColorList!.count)
+        var endAngle : CGFloat = 0
+        startAngle = startAngle - interval
         
-        // 오른쪽 반쪽 (회색)
-        let rightRingLayer = CAShapeLayer()
-        let rightRingPath = NSBezierPath()
-        rightRingPath.appendArc(withCenter: center, radius: radius, startAngle: 270, endAngle: 90, clockwise: false)
-        rightRingLayer.path = rightRingPath.cgPath
-        rightRingLayer.strokeColor = NSColor.systemBlue.withAlphaComponent(effectRingInfo.ringLineAlpha).cgColor
-        rightRingLayer.fillColor = NSColor.clear.cgColor
-        rightRingLayer.lineWidth = lineWidth
-        ringLayer.addSublayer(rightRingLayer)
+        for idx in 0..<effectRingInfo.ringColorList!.count {
+            let newLayer = CAShapeLayer()
+            let leftRingPath = NSBezierPath()
+            startAngle = startAngle + interval
+            endAngle = interval * CGFloat(idx + 1)
+            print("startAngle : \(startAngle)")
+            print("endAngle : \(endAngle)")
+            
+            leftRingPath.appendArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
+            newLayer.path = leftRingPath.cgPath
+            newLayer.strokeColor = effectRingInfo.ringColorList![idx].color.withAlphaComponent(effectRingInfo.ringLineAlpha).cgColor
+            newLayer.fillColor = NSColor.clear.cgColor
+            newLayer.lineWidth = lineWidth
+            ringLayer.addSublayer(newLayer)
+        }
+        
+//        // 왼쪽 반쪽 (금색)
+//        let leftRingLayer = CAShapeLayer()
+//        let leftRingPath = NSBezierPath()
+//        leftRingPath.appendArc(withCenter: center, radius: radius, startAngle: 90, endAngle: 270, clockwise: false)
+//        leftRingLayer.path = leftRingPath.cgPath
+//        leftRingLayer.strokeColor = NSColor.systemYellow.withAlphaComponent(effectRingInfo.ringLineAlpha).cgColor
+//        leftRingLayer.fillColor = NSColor.clear.cgColor
+//        leftRingLayer.lineWidth = lineWidth
+//        ringLayer.addSublayer(leftRingLayer)
+//        
+//        // 오른쪽 반쪽 (회색)
+//        let rightRingLayer = CAShapeLayer()
+//        let rightRingPath = NSBezierPath()
+//        rightRingPath.appendArc(withCenter: center, radius: radius, startAngle: 270, endAngle: 90, clockwise: false)
+//        rightRingLayer.path = rightRingPath.cgPath
+//        rightRingLayer.strokeColor = NSColor.systemBlue.withAlphaComponent(effectRingInfo.ringLineAlpha).cgColor
+//        rightRingLayer.fillColor = NSColor.clear.cgColor
+//        rightRingLayer.lineWidth = lineWidth
+//        ringLayer.addSublayer(rightRingLayer)
         
         return ringLayer
     }

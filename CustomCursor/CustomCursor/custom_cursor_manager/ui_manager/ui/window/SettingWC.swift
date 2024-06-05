@@ -13,6 +13,7 @@ protocol SettingWCDelegate: AnyObject {
     func actionRingWidthSlider(_ value:CGFloat)
     func actionRingAlphaSlider(_ value:CGFloat)
     func actionRingAnimationBtn(_ isOn:Bool)
+    func setNewColorSet(colorList:[Color])
 }
 
 public class SettingWC : NSWindowController, NSWindowDelegate, ColorSetVCDelegate{
@@ -100,10 +101,15 @@ public class SettingWC : NSWindowController, NSWindowDelegate, ColorSetVCDelegat
         }
         
         for idx in 0..<colorSetCount {
+            let color : Color? = effectRingInfo.ringColorList?[idx] ?? nil
+            
             let colorSetVC = ColorSetVC(nibName: ColorSetVC.className(), bundle: nil)
-            colorSetVC.view.frame.origin = CGPointMake(0, (colorSetVC.view.frame.size.height + colorSetPadding) * CGFloat((idx+1)))
             colorSetVC.viewIdx = idx
+            colorSetVC.colorSetTitle = "color_\(idx) :"
+            colorSetVC.colorSetColor = color != nil ? color!.color : NSColor.black
+            colorSetVC.isHasColor = color != nil ? true : false
             colorSetVC.delegate = self
+            colorSetVC.view.frame.origin = CGPointMake(0, (colorSetVC.view.frame.size.height + colorSetPadding) * CGFloat((idx+1)))
             
             colorSetViewArea.addSubview(colorSetVC.view)
             colorSetVCList.append(colorSetVC)
@@ -162,7 +168,23 @@ public class SettingWC : NSWindowController, NSWindowDelegate, ColorSetVCDelegat
     // MARK: - ColorSetVCDelegate -
     func actionColorSetCheckBoxWithIdx(idx: Int, isOn: Bool) {
         print("[SettingWC] actionColorSetCheckBoxWithIdx : \(idx), isOn : \(isOn)")
+        let colorSetVC = colorSetVCList[idx]
+        colorSetVC.setColorSetWellState(isOn)
         
+//        if isOn {
+//            effectRingInfo.ringColorList?[idx] = Color(color: NSColor.black)
+//        }else {
+//            effectRingInfo.ringColorList?[idx] = Color(color: NSColor.black)
+//        }
+        
+        self.delegate?.setNewColorSet(colorList: effectRingInfo.ringColorList ?? [])
+    }
+    
+    func actionColorSetWellWithIdx(idx:Int, color:NSColor) {
+        print("[SettingWC] actionColorSetWellWithIdx : \(idx), color : \(color)")
+        effectRingInfo.ringColorList?[idx] = Color(color: color)
+        
+        self.delegate?.setNewColorSet(colorList: effectRingInfo.ringColorList ?? [])
     }
     
 }
