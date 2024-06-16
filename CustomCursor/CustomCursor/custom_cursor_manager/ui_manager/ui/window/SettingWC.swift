@@ -59,7 +59,7 @@ public class SettingWC : NSWindowController, NSWindowDelegate, ColorSetVCDelegat
         
         switch effectRingInfo.ringType {
         case .NONE:
-            ringTypeComboBox.selectItem(at: 0)
+            ringTypeComboBox.selectItem(at: 1)
         case .NORMAL:
             ringTypeComboBox.selectItem(at: 0)
         case .GRADATION:
